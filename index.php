@@ -7,26 +7,27 @@
   </head>
 <body>
   <div id ="contenedor">
-    <?php require'includes/comun/cabecera.php'?>
-    <div id = "news">
-       <?php require'leftnews.php'?>
-    </div>
+  	<div id = "contenido">
+	    <?php require'includes/comun/cabecera.php'?>
+	    <div id = "news">
+	       <?php require'leftnews.php'?>
+	    </div>
 
-    <div id = "publi">
-      
-    </div>
+	    <div id = "publi">
+	      
+	    </div>
 
-    <div id = "week">
-      <h1>AQUI SE MUESTRA EL WOTW</h1>
-    </div>
+	    <div id = "week">
+	      <h1>AQUI SE MUESTRA EL WOTW</h1>
+	    </div>
 
-    <div id = "month">
-      <h1>AQUI SE MUESTRA EL WOTM</h1>
-    </div>
-
-     <div id = "products">
-      <h1>Productos</h1>
-    </div>
+	    <div id = "month">
+	      <h1>AQUI SE MUESTRA EL WOTM</h1>
+	    </div>
+	    <div id = "products">
+	      <h1>Productos</h1>
+	    </div>
+	 </div>
   </div>
 </body>
 </html>

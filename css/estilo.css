@@ -83,7 +83,6 @@
 	div#week{
 		background-color: tomato;
 		display: inline-flex;
-		min-height: 200px;
 		margin-left: 5%;
 		padding: 2%
 	}
@@ -91,14 +90,15 @@
 	div#month{
 		background-color: tomato;
 		display: inline-flex;
-		min-height: 200px;
 		margin-left: 5%;
 		padding: 2%
 	}
 
 	div#publi{
-		min-height: 200px;
+		height: 200px;
 		float: top;
+		margin-left: 10%
+	
 	}
 	div#products{
 		background-color: green;
