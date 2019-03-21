@@ -70,6 +70,45 @@
 		background-color: #DCDCDC;
 	}
 
+/*index*/
+
+	div#news{
+		background-color: #8FBC8F;
+		display: flex;
+		float: left;
+		margin-top: 7%;
+		min-height: 400px;
+	}
+
+	div#week{
+		background-color: tomato;
+		display: inline-flex;
+		min-height: 200px;
+		margin-left: 5%;
+		padding: 2%
+	}
+
+	div#month{
+		background-color: tomato;
+		display: inline-flex;
+		min-height: 200px;
+		margin-left: 5%;
+		padding: 2%
+	}
+
+	div#publi{
+		min-height: 200px;
+		float: top;
+	}
+	div#products{
+		background-color: green;
+		display: inline-flex;
+		margin-top: 5%;
+		margin-left: 35%;
+		float: center;
+		text-align: center;
+	}
+
 
 /*Fuentes y estilos para etiquetas universales -------*/
 
