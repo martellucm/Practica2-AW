@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 20:19:56
+-- Tiempo de generación: 21-03-2019 a las 20:43:12
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `foto` (
   `idProd` int(11) NOT NULL,
-  `foto` int(11) NOT NULL
+  `foto` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE `foto` (
 
 CREATE TABLE `fotousuario` (
   `idUsuario` int(11) NOT NULL,
-  `imagen` int(11) NOT NULL
+  `imagen` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
