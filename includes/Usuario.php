@@ -23,7 +23,9 @@ class Usuario
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['rol']);
+                $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['email'],
+							$fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
+							$fila['password'], $fila['avatar'], $fila['rol']);
                 $user->id = $fila['id'];
                 $result = $user;
             }
@@ -35,13 +37,13 @@ class Usuario
         return $result;
     }
     
-    public static function crea($nombreUsuario, $nombre, $password, $rol)
+    public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol)
     {
         $user = self::buscaUsuario($nombreUsuario);
         if ($user) {
             return false;
         }
-        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $rol);
+        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol);
         return self::guarda($user);
     }
     
@@ -62,10 +64,16 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, rol) VALUES('%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, email, ptosForum, ptosProd, ptosTourn, avatar, rol)
+						VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
+            , $conn->real_escape_string($usuario->email)
+            , $conn->real_escape_string($usuario->ptosForum)
+            , $conn->real_escape_string($usuario->ptosProd)
+            , $conn->real_escape_string($usuario->ptosTourn)
+            , $conn->real_escape_string($usuario->avatar)
             , $conn->real_escape_string($usuario->rol));
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
@@ -80,10 +88,16 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', rol='%s' WHERE U.id=%i"
+        $query=sprintf("UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s', 
+						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', WHERE U.id=%i"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
+            , $conn->real_escape_string($usuario->email)
+            , $conn->real_escape_string($usuario->ptosForum)
+            , $conn->real_escape_string($usuario->ptosProd)
+            , $conn->real_escape_string($usuario->ptosTourn)
+            , $conn->real_escape_string($usuario->avatar)
             , $conn->real_escape_string($usuario->rol)
             , $usuario->id);
         if ( $conn->query($query) ) {
@@ -106,14 +120,29 @@ class Usuario
     private $nombre;
 
     private $password;
+    
+	private $email;
+    
+	private $ptosForum;
+    
+	private $ptosProd;
+    
+	private $ptosTourn;
+    
+	private $avatar;
 
     private $rol;
 
-    private function __construct($nombreUsuario, $nombre, $password, $rol)
+    private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol)
     {
         $this->nombreUsuario= $nombreUsuario;
         $this->nombre = $nombre;
         $this->password = $password;
+		$this->email = $email;
+		$this->ptosForum = $ptosForum;
+		$this->ptosProd = $ptosProd;
+		$this->ptosTourn = $ptosTourn;
+		$this->avatar = $avatar;
         $this->rol = $rol;
     }
 
