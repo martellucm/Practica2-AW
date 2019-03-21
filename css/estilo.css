@@ -31,11 +31,17 @@
 		float: top;
 	}
 
-	.saludo {
-		width: 100%;
-		text-align: right;
-		display: block;
-		
+	.saludo a{
+		display: inline-block;
+		float: right;
+		width: 150px;
+		height: 40px;
+		background-color: #8FBC8F;
+		opacity: .8;
+		line-height: 40px;
+		text-align: center;
+		font-size: 17px;
+		border: 1px white outset;
 	}
 /*Zona de estilo en el menuBar------------------------*/
 
