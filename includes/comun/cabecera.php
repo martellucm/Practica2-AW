@@ -9,15 +9,15 @@
 		echo "<a href='login.php'>Login</a> <a href='registro.php'>Registro</a>";
 	}
 	?>
-	</div>
-
+	
 	<div class="navMenu">
 		<ul>
 			<li><a href='index.php'>Home</a></li>
 			<li><a href=''>Productos</a></li>
 			<li><a href=''>Torneos</a></li>
-			<li><a href=''>Sobrenosotros</a></li>
+			<li><a href=''>About us</a></li>
 			<li><a href=''>Foro</a></li>
 		</ul>
+		</div>
 	</div>
 </div>

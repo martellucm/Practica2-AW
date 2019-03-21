@@ -42,7 +42,8 @@
 	.navMenu ul{
 		list-style: none;
 		margin: 0px;
-		padding-top: 85px;
+		padding-top: auto;
+		padding-left: auto;
 		text-transform: uppercase;
 	}
 
