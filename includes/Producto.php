@@ -11,8 +11,9 @@ class Product {
 	private $jugadores;
 	private $link;
 	private $empresa;
+    private $fprincipal;
 
-	private function __construct($nombreProd, $puntos, $descript, $edad, $jugadores, $link, $empresa)
+	private function __construct($nombreProd, $puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
     {
         $this->nombreProd= $nombreProd;
         $this->puntos = $puntos;
@@ -21,6 +22,7 @@ class Product {
         $this->jugadores = $jugadores;
         $this->link = $link;
         $this->empresa = $empresa;
+        $this->fprincipal = $fprincipal;
     }
 
 	public static function buscaProduco($nombreProd)
@@ -51,13 +53,13 @@ class Product {
         }
         return self::inserta($producto);
     }
-	public static function crea($nombreProd, $descript, $edad, $jugadores, $link, $empresa)
+	public static function crea($nombreProd, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
     {
         $product = self::buscaProduco($nombreProd);
         if ($product) {
             return false;
         }
-        $product = new Producto($nombreProd, $descript, $edad, $jugadores, $link, $empresa);
+        $product = new Producto($nombreProd, $descript, $edad, $jugadores, $link, $empresa, $fprincipal);
         return self::guarda($product);
     }
 
@@ -65,12 +67,14 @@ class Product {
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa,fprincipal) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', %s)"
             , $conn->real_escape_string($producto->nombreProd)
             , $conn->filter_var($producto->puntos, FILTERSANITIZE_NUMBER_INT)
             , $conn->real_escape_string($producto->descript)
             , $conn->filter_var($producto->edad,FILTERSANITIZE_NUMBER_INT),
-        	$conn->filter_var($producto->jugadores,FILTERSANITIZE_NUMBER_INT), $conn->real_escape_string($producto->link),$conn->real_escape_string($producto->empresa));
+        	$conn->filter_var($producto->jugadores,FILTERSANITIZE_NUMBER_INT), $conn->real_escape_string($producto->link),
+            $conn->real_escape_string($producto->empresa),
+            $conn ->($producto->fprincipal));
         if ( $conn->query($query) ) {
             $producto->id = $conn->insert_id;
         } else {
@@ -93,10 +97,11 @@ class Product {
             , $conn->($producto->jugadores)
             , $conn->real_escape_string($producto->link)
             , $conn->real_escape_string($producto->empresa)
+            ,$conn ->($producto->fprincipal)
             , $producto->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el producto: " . $usuario->id;
+                echo "No se ha podido actualizar el producto: " . $producto->id;
                 exit();
             }
         } else {
@@ -136,6 +141,9 @@ class Product {
     }
     public function empresa(){
     	return this->empresa;
+    }
+    public function fprincipal(){
+        return this->fprincipal;
     }
 
 }
