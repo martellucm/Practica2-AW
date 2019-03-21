@@ -68,17 +68,18 @@ class Product {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa,fprincipal) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', %s)"
-            , $conn->real_escape_string($producto->nombreProd)
-            , $conn->filter_var($producto->puntos, FILTERSANITIZE_NUMBER_INT)
-            , $conn->real_escape_string($producto->descript)
-            , $conn->filter_var($producto->edad,FILTERSANITIZE_NUMBER_INT),
-        	$conn->filter_var($producto->jugadores,FILTERSANITIZE_NUMBER_INT), $conn->real_escape_string($producto->link),
-            $conn->real_escape_string($producto->empresa),
-            $conn ->($producto->fprincipal));
+            , $conn->real_escape_string($producto->nombreProd())
+            , $conn->filter_var($producto->puntos(), FILTERSANITIZE_NUMBER_INT)
+            , $conn->real_escape_string($producto->descript())
+            , $conn->filter_var($producto->edad(),FILTERSANITIZE_NUMBER_INT),
+        	$conn->filter_var($producto->jugadores(),FILTERSANITIZE_NUMBER_INT), 
+            $conn->real_escape_string($producto->link()),
+            $conn->real_escape_string($producto->empresa()),
+            $conn ->($producto->fprincipal()));
         if ( $conn->query($query) ) {
-            $producto->id = $conn->insert_id;
+            $producto->id() = $conn->insert_id();
         } else {
-            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            echo "Error al insertar en la BD: (" . $conn->errno() . ") " . utf8_encode($conn->error());
             exit();
         }
         return $producto;
@@ -89,19 +90,19 @@ class Product {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("UPDATE producto P SET nombreProd = '%s', puntos='%s', descript='%s', edad='%s', jugadores= '%s', link= '%s', empresa='%s' WHERE P.id=%i"
-            , $conn->real_escape_string($producto->nombreProd)
-            , $conn->($producto->puntos)
-            , $conn->real_escape_string($producto->descript)
-            , $conn->($producto->edad)
-            , $conn->($producto->jugadores)
-            , $conn->($producto->jugadores)
-            , $conn->real_escape_string($producto->link)
-            , $conn->real_escape_string($producto->empresa)
-            ,$conn ->($producto->fprincipal)
-            , $producto->id);
+            , $conn->real_escape_string($producto->nombreProd())
+            , $conn->($producto->puntos())
+            , $conn->real_escape_string($producto->descript())
+            , $conn->($producto->edad())
+            , $conn->($producto->jugadores())
+            , $conn->($producto->jugadores())
+            , $conn->real_escape_string($producto->link())
+            , $conn->real_escape_string($producto->empresa())
+            ,$conn ->($producto->fprincipal())
+            , $producto->id());
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el producto: " . $producto->id;
+                echo "No se ha podido actualizar el producto: " . $producto->id();
                 exit();
             }
         } else {
@@ -124,26 +125,26 @@ class Product {
 
     public function puntos()
     {
-    	return this->puntos;
+    	return $this->puntos;
     }
     public function descript(){
-    	return this->descript;
+    	return $this->descript;
     }
     public function edad(){
-    	return this->edad;
+    	return $this->edad;
     }
 
     public function jugadores(){
-    	return this->jugadores;
+    	return $this->jugadores;
     }
     public function link(){
-    	return this->link;
+    	return $this->link;
     }
     public function empresa(){
-    	return this->empresa;
+    	return $this->empresa;
     }
     public function fprincipal(){
-        return this->fprincipal;
+        return $this->fprincipal;
     }
 
 }

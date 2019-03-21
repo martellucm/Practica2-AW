@@ -18,7 +18,14 @@
 	    </div>
 
 	    <div id = "week">
-	      <h1>AQUI SE MUESTRA EL WOTW</h1>
+	    	 <h1>AQUI SE MUESTRA EL WOTW</h1>
+	     <?php 
+	    	/*  require_once __DIR__.'/includes/GestionProducto.php';
+	      	  $GestionProducto = Product::mostrarProducto('Galleta');
+		      echo $producto["img"];
+		      echo $producto["nombre"];
+	          echo $producto["puntos"];*/
+	      ?>
 	    </div>
 
 	    <div id = "month">

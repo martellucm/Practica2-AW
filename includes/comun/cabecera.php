@@ -6,8 +6,9 @@
 			echo "Bienvenido, " . $_SESSION['nombre'] . ".<a href='logout.php'>(salir)</a>";
 
 		} else {
-			echo "<a href='login.php'>Login</a>";
 			echo "<a href='registro.php'>Registro</a>";
+			echo "<a href='login.php'>Login</a>";
+			
 		}
 		?>
 	</div>
