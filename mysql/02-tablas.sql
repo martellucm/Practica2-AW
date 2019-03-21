@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 19:31:11
+-- Tiempo de generación: 21-03-2019 a las 19:38:54
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -53,6 +53,21 @@ CREATE TABLE `producto` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `torneo`
+--
+
+CREATE TABLE `torneo` (
+  `idTourn` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `tipoTorneo` varchar(20) NOT NULL,
+  `idJuego` int(11) NOT NULL,
+  `Puntuacion` int(20) NOT NULL,
+  `esMensual` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -87,6 +102,12 @@ ALTER TABLE `producto`
   ADD UNIQUE KEY `id` (`nombreProd`);
 
 --
+-- Indices de la tabla `torneo`
+--
+ALTER TABLE `torneo`
+  ADD PRIMARY KEY (`idTourn`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -108,6 +129,12 @@ ALTER TABLE `foto`
 --
 ALTER TABLE `producto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `torneo`
+--
+ALTER TABLE `torneo`
+  MODIFY `idTourn` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
