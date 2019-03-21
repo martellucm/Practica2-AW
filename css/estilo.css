@@ -1,0 +1,103 @@
+/*
+*	HOJA DE ESTILOS PRÁCTICA 2
+*/
+
+
+/*Sección del estilo para el contenedor en general----*/
+
+	div#contenedor {
+		height: 90px;
+		width: auto;
+		margin: 0px;
+	}
+
+/*Seccion del estilo para la cabecera ----------------*/
+
+	div#cabecera a, div#cabecera a:visited {
+		color: black;
+		font-weight: bold;
+		text-decoration: none;
+	}
+	div#cabecera a:hover {
+		color:  #b12a2a;
+		font-weight: bold;
+	}
+	div#cabecera{
+		background-color: #EEE8AA;
+		height: 120px;
+		border-color:  #b12a2a;
+		margin: 0px;
+		padding: 10px;
+		float: top;
+	}
+
+	.saludo {
+		width: 100%;
+		text-align: right;
+		display: block;
+		
+	}
+/*Zona de estilo en el menuBar------------------------*/
+
+	.navMenu ul{
+		list-style: none;
+		margin: 0px;
+		padding-top: 85px;
+		text-transform: uppercase;
+	}
+
+	.navMenu ul li{
+		float:left;
+		width: 150px;
+		height: 40px;
+		background-color: #8FBC8F;
+		opacity: .8;
+		line-height: 40px;
+		text-align: center;
+		font-size: 17px;
+		border: 1px white outset;
+
+	}
+
+	.navMenu ul li a{
+		display: block;
+		color: white;
+		text-decoration: none;
+	}
+
+	.navMenu ul li a:hover{
+		background-color: #DCDCDC;
+	}
+
+
+/*Fuentes y estilos para etiquetas universales -------*/
+
+	img {
+		float: left;
+		width: auto;
+		height: 100px;
+	}
+
+	h1{
+		font-weight: normal;
+		font-family:  Helvetica, Arial, sans-serif;
+		font-size: 40px;
+	}
+
+	h2{
+		font-weight: normal;
+		font-family:  Helvetica, Arial, sans-serif;
+		font-size: 35px;
+	}
+
+	h3{
+		font-weight: normal;
+		font-family:  Helvetica, Arial, sans-serif;
+		font-size: 30px;
+	}
+
+	p{
+		text-align: center;
+		font-size: 24 px;
+		font-family: "Arial", serif ;
+	}
