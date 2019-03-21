@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 19:38:54
+-- Tiempo de generación: 21-03-2019 a las 19:43:34
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -151,6 +151,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `foto`
   ADD CONSTRAINT `foto_ibfk_1` FOREIGN KEY (`idProd`) REFERENCES `producto` (`id`);
+
+--
+-- Filtros para la tabla `torneo`
+--
+ALTER TABLE `torneo`
+  ADD CONSTRAINT `torneo_ibfk_1` FOREIGN KEY (`idTourn`) REFERENCES `producto` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
