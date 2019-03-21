@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 19:43:34
+-- Tiempo de generación: 21-03-2019 a las 20:19:56
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -31,6 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `foto` (
   `idProd` int(11) NOT NULL,
   `foto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fotousuario`
+--
+
+CREATE TABLE `fotousuario` (
+  `idUsuario` int(11) NOT NULL,
+  `imagen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -81,7 +92,9 @@ CREATE TABLE `usuarios` (
   `ptosTourn` int(10) DEFAULT '0',
   `password` varchar(80) NOT NULL,
   `avatar` varchar(20) NOT NULL,
-  `rol` varchar(10) NOT NULL
+  `rol` varchar(10) NOT NULL,
+  `descrip` text,
+  `cumple` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -93,6 +106,12 @@ CREATE TABLE `usuarios` (
 --
 ALTER TABLE `foto`
   ADD PRIMARY KEY (`idProd`);
+
+--
+-- Indices de la tabla `fotousuario`
+--
+ALTER TABLE `fotousuario`
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
 -- Indices de la tabla `producto`
@@ -151,6 +170,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `foto`
   ADD CONSTRAINT `foto_ibfk_1` FOREIGN KEY (`idProd`) REFERENCES `producto` (`id`);
+
+--
+-- Filtros para la tabla `fotousuario`
+--
+ALTER TABLE `fotousuario`
+  ADD CONSTRAINT `fotousuario_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Filtros para la tabla `torneo`
