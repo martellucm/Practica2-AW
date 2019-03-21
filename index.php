@@ -7,7 +7,7 @@
   </head>
 <body>
   <div id ="contenedor">
-    <?php require'cabecera.php'?>
+    <?php require'includes/comun/cabecera.php'?>
     <div class ="descIndex">
     </div>
   </div>
