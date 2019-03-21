@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 20:43:12
+-- Tiempo de generación: 21-03-2019 a las 20:51:00
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -58,7 +58,8 @@ CREATE TABLE `producto` (
   `edad` int(10) NOT NULL DEFAULT '0',
   `jugadores` int(10) NOT NULL DEFAULT '0',
   `link` text COLLATE utf8_spanish_ci NOT NULL,
-  `empresa` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `empresa` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `fprincipal` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
