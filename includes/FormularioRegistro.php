@@ -48,7 +48,7 @@
 			}
 			
 			if (count($erroresFormulario) === 0) {
-				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', $avatar, 'user', $descrip, $cumple);
+				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', 'noob', 'user', $descrip, $cumple);
 				if (! $usuario ) {
 					$erroresFormulario[] = "El usuario ya existe";
 				} else {

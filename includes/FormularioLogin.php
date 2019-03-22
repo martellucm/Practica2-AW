@@ -32,6 +32,7 @@
 					$erroresFormulario[] = "El usuario o el password no coinciden";
 				} else {
 					if($usuario->compruebaPassword($password)){
+					//if(false){
 						$_SESSION['login'] = true;
 						$_SESSION['nombre'] = $nombreUsuario;
 						$_SESSION['esAdmin'] = strcmp($fila['rol'], 'admin') == 0 ? true : false;

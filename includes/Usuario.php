@@ -17,15 +17,15 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM Usuarios U WHERE U.nombreUsuario = '%s'", $conn->real_escape_string($nombreUsuario));
+        $query = sprintf("SELECT * FROM usuarios U WHERE U.nombreUsuario = '%s'", $conn->real_escape_string($nombreUsuario));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['email'],
+                $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
 							$fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
-							$fila['password'], $fila['avatar'], $fila['rol'], $fila['descrip'],
+							$fila['avatar'], $fila['rol'], $fila['descrip'],
 							$fila['cumple']);
                 $user->id = $fila['id'];
                 $result = $user;
@@ -65,7 +65,7 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, email, ptosForum, ptosProd, ptosTourn, avatar, rol, descrip, cumple)
+        $query=sprintf("INSERT INTO usuarios(nombreUsuario, nombre, password, email, ptosForum, ptosProd, ptosTourn, avatar, rol, descrip, cumple)
 						VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
@@ -91,7 +91,7 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s', 
+        $query=sprintf("UPDATE usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s', 
 						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', WHERE U.id=%i"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
@@ -174,7 +174,7 @@ class Usuario
 
     public function compruebaPassword($password)
     {
-        return password_verify($password, $this->password);
+       return password_verify($password, $this->password);
     }
 
     public function cambiaPassword($nuevoPassword)
