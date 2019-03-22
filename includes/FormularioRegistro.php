@@ -49,7 +49,11 @@
 		protected function generaCamposFormulario($datosIniciales){
 			$nombrUsu = '';
 			$nombr = '';
+			$email = '';
 			$passw = '';
+			$rol = '';
+			$descr = '';
+			$cumple = '';
 			
 			/*
 			* En caso de que hubiera un error se mantienen 
@@ -59,21 +63,36 @@
 			if(isset($datosIniciales['registro'])){
 				$nombrUsu = $datosIniciales['nombreUsuario'];
 				$nombr = $datosIniciales['nombre'];
-				$passw = $datosIniciales['password']; // Opcional
+				$email = $datosIniciales['email'];
+				$passw = $datosIniciales['password'];
+				$rol = 'user';
+				$descr = $datosIniciales['descrip'];
+				$cumple = $datosIniciales['cumple'];
 			}
 			
 			$html = '';
 			$html .='	<fieldset>';
 			$html .='	<div class="grupo-control">';
-			$html .='		<label>Nombre de usuario:</label> <input class="control" type="text" name="nombreUsuario" value="'.$nombrUsu.'"/>';
+			$html .='		<label>Nombre de usuario:</label> <input class="control" type="text" name="nombreUsuario" value="'.$nombrUsu.'" required />';
 			$html .='	</div>';
 			$html .='	<div class="grupo-control">';
-			$html .='		<label>Nombre completo:</label> <input class="control" type="text" name="nombre" value="'.$nombr.'"/>';
+			$html .='		<label>Nombre completo:</label> <input class="control" type="text" name="nombre" value="'.$nombr.'" required />';
 			$html .='	</div>';
 			$html .='	<div class="grupo-control">';
-			$html .='		<label>Password:</label> <input class="control" type="password" name="password" value="'.$passw.'" />';
+			$html .='		<label>Password:</label> <input class="control" type="password" name="password" value="'.$passw.'" required />';
 			$html .='	</div>';
 			$html .='	<div class="grupo-control"><label>Vuelve a introducir el Password:</label> <input class="control" type="password" name="password2" /><br /></div>';
+			
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Correo electrónico:</label> <input class="control" type="text" name="email" value="'.$email.'" required />';
+			$html .='	</div>';
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Háblanos sobre ti:</label> <input class="control" type="text" name="descrip" value="'.$descr.'" required />';
+			$html .='	</div>';
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Fecha de nacimiento:</label> <input class="control" type="date" name="cumple" value="'.$cumple.'" required />';
+			$html .='	</div>';
+			
 			$html .='	<div class="grupo-control"><button type="submit" name="registro">Registrar</button></div>';
 			$html .='</fieldset>';
 			return $html;

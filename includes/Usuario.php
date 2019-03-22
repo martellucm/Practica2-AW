@@ -25,7 +25,8 @@ class Usuario
                 $fila = $rs->fetch_assoc();
                 $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['email'],
 							$fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
-							$fila['password'], $fila['avatar'], $fila['rol']);
+							$fila['password'], $fila['avatar'], $fila['rol'], $fila['descrip'],
+							$fila['cumple']);
                 $user->id = $fila['id'];
                 $result = $user;
             }
@@ -37,13 +38,13 @@ class Usuario
         return $result;
     }
     
-    public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol)
+    public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
     {
         $user = self::buscaUsuario($nombreUsuario);
         if ($user) {
             return false;
         }
-        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol);
+        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple);
         return self::guarda($user);
     }
     
@@ -64,8 +65,8 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, email, ptosForum, ptosProd, ptosTourn, avatar, rol)
-						VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, email, ptosForum, ptosProd, ptosTourn, avatar, rol, descrip, cumple)
+						VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
@@ -74,7 +75,9 @@ class Usuario
             , $conn->real_escape_string($usuario->ptosProd)
             , $conn->real_escape_string($usuario->ptosTourn)
             , $conn->real_escape_string($usuario->avatar)
-            , $conn->real_escape_string($usuario->rol));
+            , $conn->real_escape_string($usuario->rol)
+            , $conn->real_escape_string($usuario->descrip)
+            , $conn->real_escape_string($usuario->cumple));
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
         } else {
@@ -89,7 +92,7 @@ class Usuario
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s', 
-						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', WHERE U.id=%i"
+						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', WHERE U.id=%i"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
@@ -99,6 +102,8 @@ class Usuario
             , $conn->real_escape_string($usuario->ptosTourn)
             , $conn->real_escape_string($usuario->avatar)
             , $conn->real_escape_string($usuario->rol)
+            , $conn->real_escape_string($usuario->descrip)
+            , $conn->real_escape_string($usuario->cumple)
             , $usuario->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
@@ -132,8 +137,12 @@ class Usuario
 	private $avatar;
 
     private $rol;
+	
+	private $descrip;
+	
+	private $cumple;
 
-    private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol)
+    private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
     {
         $this->nombreUsuario= $nombreUsuario;
         $this->nombre = $nombre;
@@ -144,6 +153,8 @@ class Usuario
 		$this->ptosTourn = $ptosTourn;
 		$this->avatar = $avatar;
         $this->rol = $rol;
+		$this->descrip = $descrip;
+		$this->cumple = $cumple;
     }
 
     public function id()
