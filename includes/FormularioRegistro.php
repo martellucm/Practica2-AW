@@ -31,10 +31,24 @@
 			if ( empty($password2) || strcmp($password, $password2) !== 0 ) {
 				$erroresFormulario[] = "Los passwords deben coincidir";
 			}
-
+			
+			$email = isset($datos['email']) ? $datos['email'] : null;
+			if ( empty($email)) {
+				$erroresFormulario[] = "Debe introducir un correo electrónico.";
+			}
+			
+			$cumple = isset($datos['cumple']) ? $datos['cumple'] : null;
+			if ( empty($cumple)) {
+				$erroresFormulario[] = "Debe introducir su fecha de nacimiento.";
+			}
+			
+			$descrip = isset($datos['descrip']) ? $datos['descrip'] : null;
+			if ( empty($descrip) || mb_strlen($descrip) < 5 ) {
+				$erroresFormulario[] = "¡No seas tímido! Cuéntanos algo sobre ti.";
+			}
+			
 			if (count($erroresFormulario) === 0) {
-				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, 'user');
-				
+				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', $avatar, 'user', $descrip, $cumple);
 				if (! $usuario ) {
 					$erroresFormulario[] = "El usuario ya existe";
 				} else {

@@ -1,4 +1,7 @@
-<!DOCTYPE HTML>
+<?php
+require_once __DIR__.'/includes/config.php';
+?>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <title>My Chuster Games</title>
