@@ -87,23 +87,33 @@
 
 	div#week{
 		background-color: tomato;
-		display: inline-flex;
+		display: inline-block;
 		margin-left: 5%;
-		padding: 2%
+		margin-top: 5%;
+		padding: 1%;
 	}
-
 	div#month{
 		background-color: tomato;
-		display: inline-flex;
+		display: inline-block;
 		margin-left: 5%;
-		padding: 2%
+		margin-top: 5%;
+		padding: 1%;
 	}
 
+	div#prodM img{
+		height: 250px; 
+		width: 250px;
+	}
+
+	div#prodW img{
+		height: 250px; 
+		width: 250px;
+	}
+	
 	div#publi{
 		height: 200px;
 		float: top;
-		margin-left: 10%
-	
+		margin-left: 10%;
 	}
 	div#products{
 		background-color: green;

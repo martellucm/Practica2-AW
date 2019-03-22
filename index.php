@@ -15,39 +15,38 @@ require_once __DIR__.'/includes/config.php';
 	    <div id = "news">
 	       <?php require'leftnews.php'?>
 	    </div>
+	    <div id = "publi"></div>
+	   	<div id = "month">
+	     <?php
+	    	  require_once __DIR__.'/includes/GestionProducto.php';
+	      	  $producto = GestionProducto::mostrarProducto('Galleta');
+            if(is_array($producto)){
+               $img = $producto['img'];	
+	        	echo '<div id="prodM"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
+			    echo "<p>".$producto['nombre']."</p>";
+		        echo "<p>".$producto['puntos']."</p> </div>";
+            }
+            else{
+              echo 'No ha encontrado el producto';
+            }
+	      ?>
+	    <div id = "week">
+	     <?php
+	    	  require_once __DIR__.'/includes/GestionProducto.php';
+	      	  $producto = GestionProducto::mostrarProducto('Galleta');
+            if(is_array($producto)){
+               $img = $producto['img'];	
+	        	echo '<div id="prodM"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
+			    echo "<p>".$producto['nombre']."</p>";
+		        echo "<p>".$producto['puntos']."</p> </div>";
 
-	    <div id = "publi">
-
-	    </div>
-
-		    <div id = "week">
-		     <?php
-		    	  require_once __DIR__.'/includes/GestionProducto.php';
-		      	  $producto = GestionProducto::mostrarProducto('Galleta');
-	            if(is_array($producto)){
-
-	               	$img = $producto['img'];
-
-
-	            	echo '';
-	    		    echo "<p>".$producto['nombre']."</p>";
-	    	        echo "<p>".$producto['puntos']."</p> ";
-
-	    	       
-	            }
-	            else{
-	              echo 'No ha encontrado el producto';
-	            }
-		      ?>
-		    </div>
-	    </div>
-
-	    <div id = "month">
-	    </div>
-
-	    <div id = "products">
-	    </div>
-	 </div>
-  </div>
+    	       
+            }
+            else{
+              echo 'No ha encontrado el producto';
+            }
+	      ?> </div>
+	     <div id = "products"></div>
+	</div>
 </body>
 </html>
