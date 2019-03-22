@@ -14,17 +14,22 @@
 	    </div>
 
 	    <div id = "publi">
-	      
+
 	    </div>
 
 	    <div id = "week">
 	    	 <h1>AQUI SE MUESTRA EL WOTW</h1>
-	     <?php 
-	    	/*  require_once __DIR__.'/includes/GestionProducto.php';
-	      	  $GestionProducto = Product::mostrarProducto('Galleta');
-		      echo $producto["img"];
-		      echo $producto["nombre"];
-	          echo $producto["puntos"];*/
+	     <?php
+	    	  require_once __DIR__.'/includes/GestionProducto.php';
+	      	  $producto = GestionProducto::mostrarProducto('carnival zombie');
+            if(is_array($producto)){
+    		      echo $producto["img"];
+    		      echo $producto["nombre"];
+    	        echo $producto["puntos"];
+            }
+            else{
+              echo 'No ha encontrado el producto';
+            }
 	      ?>
 	    </div>
 
@@ -38,5 +43,3 @@
   </div>
 </body>
 </html>
-
-
