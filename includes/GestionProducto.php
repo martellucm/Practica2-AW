@@ -3,14 +3,11 @@
 class GestionProducto{
         public static function mostrarProducto($nombreProd){
             $producto = Product::buscaProduco($nombreProd);
-            if ( is_array($producto){
-
-              /*  $producto = array(
-              "img" => Product::fprincipal(),
-              "nombre"=> Product::nombreProd(),
-              "puntos" => Product::puntos());
-            */
-              
+           
+            if(!$producto){
+                $arr = "Este producto no existe";
+            }
+             else{              
               $img = $producto->fprincipal();
               $nombre = $producto->nombreProd();
               $puntos = $producto->puntos();
@@ -20,9 +17,6 @@ class GestionProducto{
                         "nombre" => $nombre,
                         "puntos" => $puntos,
                       );
-            }
-            else{
-                $arr = "Este producto no existe";
             }
 
             return $arr;

@@ -20,27 +20,32 @@ require_once __DIR__.'/includes/config.php';
 
 	    </div>
 
-	    <div id = "week">
-	    	 <h1>AQUI SE MUESTRA EL WOTW</h1>
-	     <?php
-	    	  require_once __DIR__.'/includes/GestionProducto.php';
-	      	  $producto = GestionProducto::mostrarProducto('carnival zombie');
-            if(is_array($producto)){
-    		      echo $producto["img"];
-    		      echo $producto["nombre"];
-    	        echo $producto["puntos"];
-            }
-            else{
-              echo 'No ha encontrado el producto';
-            }
-	      ?>
+		    <div id = "week">
+		     <?php
+		    	  require_once __DIR__.'/includes/GestionProducto.php';
+		      	  $producto = GestionProducto::mostrarProducto('Galleta');
+	            if(is_array($producto)){
+
+	               	$img = $producto['img'];
+
+
+	            	echo '';
+	    		    echo "<p>".$producto['nombre']."</p>";
+	    	        echo "<p>".$producto['puntos']."</p> ";
+
+	    	       
+	            }
+	            else{
+	              echo 'No ha encontrado el producto';
+	            }
+		      ?>
+		    </div>
 	    </div>
 
 	    <div id = "month">
-	      <h1>AQUI SE MUESTRA EL WOTM</h1>
 	    </div>
+
 	    <div id = "products">
-	      <h1>Productos</h1>
 	    </div>
 	 </div>
   </div>

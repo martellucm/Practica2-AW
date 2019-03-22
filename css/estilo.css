@@ -110,7 +110,7 @@
 		display: inline-flex;
 		margin-top: 5%;
 		margin-left: 35%;
-		float: center;
+		position: bottom;
 		text-align: center;
 	}
 
