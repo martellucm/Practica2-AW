@@ -109,11 +109,14 @@
 		float: top;
 		margin-left: 10%;
 	}
+	div #productos{
+		margin-left: 15%;
+	}
 	div#products{
 		background-color: blueviolet;
 		display: inline-grid;
 		margin-top: 5%;
-		margin-left: 35%;
+		margin-left: 10%;
 		position: bottom;
 		text-align: center;
 	}
