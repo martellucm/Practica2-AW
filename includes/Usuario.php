@@ -37,7 +37,31 @@ class Usuario
         }
         return $result;
     }
-    
+
+    public static function getWW(){
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM `usuarios` HAVING MAX(ptosTourn)");
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
+              $fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
+              $fila['avatar'], $fila['rol'], $fila['descrip'],
+              $fila['cumple']);
+                $user->id = $fila['id'];
+                $result = $user;
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $result;
+    }
+
     public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
     {
         $user = self::buscaUsuario($nombreUsuario);
@@ -47,12 +71,12 @@ class Usuario
         $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple);
         return self::guarda($user);
     }
-    
+
     private static function hashPassword($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
-    
+
     public static function guarda($usuario)
     {
         if ($usuario->id !== null) {
@@ -60,7 +84,7 @@ class Usuario
         }
         return self::inserta($usuario);
     }
-    
+
     private static function inserta($usuario)
     {
         $app = Aplicacion::getSingleton();
@@ -86,12 +110,12 @@ class Usuario
         }
         return $usuario;
     }
-    
+
     private static function actualiza($usuario)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s', 
+        $query=sprintf("UPDATE usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s',
 						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', WHERE U.id=%i"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
@@ -114,10 +138,10 @@ class Usuario
             echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
             exit();
         }
-        
+
         return $usuario;
     }
-    
+
     private $id;
 
     private $nombreUsuario;
@@ -125,21 +149,21 @@ class Usuario
     private $nombre;
 
     private $password;
-    
+
 	private $email;
-    
+
 	private $ptosForum;
-    
+
 	private $ptosProd;
-    
+
 	private $ptosTourn;
-    
+
 	private $avatar;
 
     private $rol;
-	
+
 	private $descrip;
-	
+
 	private $cumple;
 
     private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
@@ -170,6 +194,10 @@ class Usuario
     public function nombreUsuario()
     {
         return $this->nombreUsuario;
+    }
+
+    public function ptosTourn(){
+        return $this->ptosTourn;
     }
 
     public function compruebaPassword($password)
