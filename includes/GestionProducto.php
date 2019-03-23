@@ -73,5 +73,27 @@ class GestionProducto{
            unset($row);
          }
         }
+
+        public static function getProducts(){
+
+          $app = Aplicacion::getSingleton();
+           $conn = $app->conexionBd();
+           $query = sprintf("SELECT `id` FROM `producto`");
+           $rs = $conn->query($query);
+           $result = false;
+           if ($rs) {
+            if ($rs->num_rows > 0) {
+              while( $row = mysqli_fetch_assoc($rs)) {
+               $producto[] = GestionProducto::guardarProducto($row['id']);
+              }
+              $result = $producto;
+              $rs->free();
+            }
+           } else {
+               echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+               exit();
+           }
+           return $result;
+        }
     }
  ?>
