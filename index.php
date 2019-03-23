@@ -59,7 +59,7 @@ require_once __DIR__.'/includes/config.php';
 	     <div id = "products">
         <?php
           require_once __DIR__.'/includes/GestionProducto.php';
-            $producto = GestionProducto::mostrarProd();
+          //  $producto = GestionProducto::mostrarProd();
             
         ?> </div>
 	</div>
