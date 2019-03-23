@@ -88,41 +88,40 @@
 	div#week{
 		background-color: tomato;
 		display: inline-block;
-		margin-left: 5%;
-		margin-top: 5%;
+		margin-left: 15%;
+		margin-top: 2%;
 		padding: 1%;
+		min-height: 250px;
+		min-width: 250px;
 	}
 	div#month{
 		background-color: tomato;
 		display: inline-block;
-		margin-left: 5%;
-		margin-top: 5%;
+		margin-left:15%;
+		margin-top: 2%;
 		padding: 1%;
+		min-height: 250px;
+		min-width: 250px;
 	}
-
-	div#prodM img{
-		height: 250px; 
-		width: 250px;
-	}
-
-	div#prodW img{
-		height: 250px; 
-		width: 250px;
-	}
-	
+		
 	div#publi{
 		height: 200px;
 		float: top;
 		margin-left: 10%;
 	}
 	div#products{
-		background-color: green;
-		display: inline-flex;
+		background-color: blueviolet;
+		display: inline-grid;
 		margin-top: 5%;
 		margin-left: 35%;
 		position: bottom;
 		text-align: center;
 	}
+	div#products img{
+		height: 200px;
+		width: 200px;
+	}
+
 
 
 /*Fuentes y estilos para etiquetas universales -------*/
