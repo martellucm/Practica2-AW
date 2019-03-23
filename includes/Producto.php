@@ -53,13 +53,13 @@ class Product {
         }
         return self::inserta($producto);
     }
-	public static function crea($nombreProd, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
+	public static function crea($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
     {
         $product = self::buscaProduco($nombreProd);
         if ($product) {
             return false;
         }
-        $product = new Producto($nombreProd, $descript, $edad, $jugadores, $link, $empresa, $fprincipal);
+        $product = new Product($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal);
         return self::guarda($product);
     }
 
@@ -67,15 +67,15 @@ class Product {
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO producto(id, nombreProd, puntos, descript, edad, jugadores, link, empresa,fprincipal) VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', %s)"
+        $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa,fprincipal) VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($producto->nombreProd)
-            , $conn->filter_var($producto->puntos, FILTERSANITIZE_NUMBER_INT)
+            , $conn->real_escape_string($producto->puntos)
             , $conn->real_escape_string($producto->descript)
-            , $conn->filter_var($producto->edad,FILTERSANITIZE_NUMBER_INT)
-        	  , $conn->filter_var($producto->jugadores,FILTERSANITIZE_NUMBER_INT)
+            , $conn->real_escape_string($producto->edad)
+        	  , $conn->real_escape_string($producto->jugadores)
             , $conn->real_escape_string($producto->link)
             , $conn->real_escape_string($producto->empresa)
-            , $conn ->$producto->fprincipal);
+            , $conn ->real_escape_string($producto->fprincipal));
         if ( $conn->query($query) ) {
             $producto->id = $conn->insert_id;
         } else {
