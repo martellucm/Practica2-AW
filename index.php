@@ -33,6 +33,7 @@ require_once __DIR__.'/includes/config.php';
 
             $user = Usuario::getWW();
             if($user != false){
+			  echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" />';
               echo "<div><p>".$user->nombreUsuario()."</p>";
               echo "<p>".$user->ptosTourn()."</p> </div>";
             }
@@ -40,7 +41,7 @@ require_once __DIR__.'/includes/config.php';
               echo "<p>No hay un ganador claro</p>";
             }
 	      ?>
-        </div> 
+        </div>
 	    <div id = "week">
          <?php
             require_once __DIR__.'/includes/Usuario.php';
@@ -53,10 +54,10 @@ require_once __DIR__.'/includes/config.php';
               echo "<p>No hay un ganador claro</p>";
             }
         ?>
-       
 
-      </div> 
-	     
+
+      </div>
+
 	     <div id = "products">
         <?php
           require_once __DIR__.'/includes/GestionProducto.php';
@@ -72,7 +73,7 @@ require_once __DIR__.'/includes/config.php';
             else{
               echo 'No ha encontrado el producto';
             }
-        ?> </div> 
+        ?> </div>
 	</div>
 </body>
 </html>

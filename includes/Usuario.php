@@ -26,7 +26,7 @@ class Usuario
                 $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
 							$fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
 							$fila['avatar'], $fila['rol'], $fila['descrip'],
-							$fila['cumple']);
+							$fila['cumple'], $fila['fprincipal']);
                 $user->id = $fila['id'];
                 $result = $user;
             }
@@ -50,7 +50,7 @@ class Usuario
                 $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
               $fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
               $fila['avatar'], $fila['rol'], $fila['descrip'],
-              $fila['cumple']);
+              $fila['cumple'], $fila['fprincipal']);
                 $user->id = $fila['id'];
                 $result = $user;
             }
@@ -89,8 +89,8 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO usuarios(nombreUsuario, nombre, password, email, ptosForum, ptosProd, ptosTourn, avatar, rol, descrip, cumple)
-						VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO usuarios(nombreUsuario, nombre, password, email, ptosForum, ptosProd, ptosTourn, avatar, rol, descrip, cumple, fprincipal)
+						VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
@@ -101,7 +101,8 @@ class Usuario
             , $conn->real_escape_string($usuario->avatar)
             , $conn->real_escape_string($usuario->rol)
             , $conn->real_escape_string($usuario->descrip)
-            , $conn->real_escape_string($usuario->cumple));
+            , $conn->real_escape_string($usuario->cumple)
+			, $conn->NULL);
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
         } else {
@@ -166,7 +167,9 @@ class Usuario
 
 	private $cumple;
 
-    private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
+	private $fprincipal;
+
+    private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple, $fprincipal)
     {
         $this->nombreUsuario= $nombreUsuario;
         $this->nombre = $nombre;
@@ -179,6 +182,7 @@ class Usuario
         $this->rol = $rol;
 		$this->descrip = $descrip;
 		$this->cumple = $cumple;
+		$this->fprincipal = $fprincipal;
     }
 
     public function id()
@@ -199,6 +203,10 @@ class Usuario
     public function ptosTourn(){
         return $this->ptosTourn;
     }
+
+	public function fprincipal(){
+		return $this->fprincipal;
+	}
 
     public function compruebaPassword($password)
     {
