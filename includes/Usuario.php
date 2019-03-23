@@ -199,9 +199,36 @@ class Usuario
     {
         return $this->nombreUsuario;
     }
+	
+	public function nombre()
+    {
+        return $this->nombre;
+    }
+	
+	public function email()
+    {
+        return $this->email;
+    }
+	
+	public function cumple()
+    {
+        return $this->cumple;
+    }
 
     public function ptosTourn(){
         return $this->ptosTourn;
+    }
+	
+	public function ptosForum(){
+        return $this->ptosForum;
+    }
+	
+	public function ptosProd(){
+        return $this->ptosProd;
+    }
+	
+	public function descrip(){
+        return $this->descrip;
     }
 
 	public function fprincipal(){

@@ -17,8 +17,8 @@ require_once __DIR__.'/includes/config.php';
 	    </div>
 	    <div id = "publi"></div>
 	   	<div id = "month">
-	     <?php
-       require_once __DIR__.'/includes/Usuario.php';
+	    <?php
+        require_once __DIR__.'/includes/GestionaUsuario.php';
           /*
 	      	  $producto = GestionProducto::mostrarProducto('Galleta');
             if(is_array($producto)){
@@ -31,32 +31,15 @@ require_once __DIR__.'/includes/config.php';
               echo "<p>No ha encontrado el producto</p>";
             }*/
 
-            $user = Usuario::getWW();
-            if($user != false){
-			  echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" />';
-              echo "<div><p>".$user->nombreUsuario()."</p>";
-              echo "<p>".$user->ptosTourn()."</p> </div>";
-            }
-            else{
-              echo "<p>No hay un ganador claro</p>";
-            }
+            GestionUsuario::mostrarWW();
+           
 	      ?>
         </div>
 	    <div id = "week">
-         <?php
-            require_once __DIR__.'/includes/Usuario.php';
-            $user = Usuario::getWW();
-            if($user != false){
-              echo "<div><p>".$user->nombreUsuario()."</p>";
-              echo "<p>".$user->ptosTourn()."</p> </div>";
-            }
-            else{
-              echo "<p>No hay un ganador claro</p>";
-            }
-        ?>
-
-
-      </div>
+			<?php
+				GestionUsuario::mostrarWW();
+			?>
+		</div>
 
 	     <div id = "products">
         <?php
