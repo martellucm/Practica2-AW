@@ -17,8 +17,8 @@ require_once __DIR__.'/includes/config.php';
 	    </div>
 	    <div id = "publi"></div>
 	   	<div id = "month">
-	     <?php
-       require_once __DIR__.'/includes/Usuario.php';
+	    <?php
+        require_once __DIR__.'/includes/GestionaUsuario.php';
           /*
 	      	  $producto = GestionProducto::mostrarProducto('Galleta');
             if(is_array($producto)){
@@ -31,28 +31,31 @@ require_once __DIR__.'/includes/config.php';
               echo "<p>No ha encontrado el producto</p>";
             }*/
 
-            $user = Usuario::getWW();
-            if($user != false){
-			  echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" />';
-              echo "<div><p>".$user->nombreUsuario()."</p>";
-              echo "<p>".$user->ptosTourn()."</p> </div>";
-            }
-            else{
-              echo "<p>No hay un ganador claro</p>";
-            }
+            GestionUsuario::mostrarWW();
+           
 	      ?>
         </div>
 	    <div id = "week">
-         <?php
-			GestionUsuario::mostrarWW();
-        ?>
-      </div>
+			<?php
+				GestionUsuario::mostrarWW();
+			?>
+		</div>
 
 	     <div id = "products">
         <?php
           require_once __DIR__.'/includes/GestionProducto.php';
-          //  $producto = GestionProducto::mostrarProd();
-            
+            $producto = GestionProducto::mostrarProducto('Galleta');
+            if(is_array($producto)){
+               $img = $producto['img'];
+            echo '<div id="prodM"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
+          echo "<p>".$producto['nombre']."</p>";
+            echo "<p>".$producto['puntos']."</p> </div>";
+
+
+            }
+            else{
+              echo 'No ha encontrado el producto';
+            }
         ?> </div>
 	</div>
 </body>
