@@ -44,15 +44,7 @@ require_once __DIR__.'/includes/config.php';
         </div>
 	    <div id = "week">
          <?php
-            require_once __DIR__.'/includes/Usuario.php';
-            $user = Usuario::getWW();
-            if($user != false){
-              echo "<div><p>".$user->nombreUsuario()."</p>";
-              echo "<p>".$user->ptosTourn()."</p> </div>";
-            }
-            else{
-              echo "<p>No hay un ganador claro</p>";
-            }
+			GestionUsuario::mostrarWW();
         ?>
       </div>
 
