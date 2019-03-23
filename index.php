@@ -40,12 +40,13 @@ require_once __DIR__.'/includes/config.php';
 				GestionUsuario::mostrarWW();
 			?>
 		</div>
-
+    <div id = "productos">
 	     <div id = "products">
         <?php
           require_once __DIR__.'/includes/GestionProducto.php';
            GestionProducto::mostrarProd();
         ?> </div>
+    </div>
 	</div>
 </body>
 </html>
