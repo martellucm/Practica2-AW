@@ -19,7 +19,7 @@ class GestionProducto{
               $id = $producto->id();
 
               $arr = array(
-                "img" => $img,
+                "id" => $id,
                 "nombre" => $nombre,
                 "puntos" => $puntos,
                 "descript" => $descript,
@@ -27,7 +27,7 @@ class GestionProducto{
                 "jugadores" => $jugadores,
                 "link" => $link,
                 "empresa" => $empresa,
-                "id" => $id,
+                 "img" => $img,
 
               );
             }
@@ -59,6 +59,7 @@ class GestionProducto{
          public static function mostrarProd(){
           $producto = GestionProducto::getMaxProd();
            $i = 0;
+           if(is_array($producto)){
             foreach ($producto as &$row) {
               $img = $row['img'];
               echo '<div id="products"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
@@ -70,6 +71,7 @@ class GestionProducto{
               }
             }
            unset($row);
+         }
         }
     }
  ?>
