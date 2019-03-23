@@ -25,11 +25,11 @@ class Product {
         $this->fprincipal = $fprincipal;
     }
 
-	public static function buscaProduco($nombreProd)
+	public static function buscaProduco($id)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM producto P WHERE P.nombreProd = '%s'", $conn->real_escape_string($nombreProd));
+        $query = sprintf("SELECT * FROM producto P WHERE P.id = '%s'", $conn->real_escape_string($id));
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
