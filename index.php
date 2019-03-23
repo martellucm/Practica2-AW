@@ -44,18 +44,7 @@ require_once __DIR__.'/includes/config.php';
 	     <div id = "products">
         <?php
           require_once __DIR__.'/includes/GestionProducto.php';
-            $producto = GestionProducto::mostrarProducto('Galleta');
-            if(is_array($producto)){
-               $img = $producto['img'];
-            echo '<div id="prodM"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
-          echo "<p>".$producto['nombre']."</p>";
-            echo "<p>".$producto['puntos']."</p> </div>";
-
-
-            }
-            else{
-              echo 'No ha encontrado el producto';
-            }
+           GestionProducto::mostrarProd();
         ?> </div>
 	</div>
 </body>
