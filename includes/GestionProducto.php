@@ -3,11 +3,11 @@
 class GestionProducto{
         public static function guardarProducto($id){
             $producto = Product::buscaProduco($id);
-           
+
             if(!$producto){
                 $arr = "Este producto no existe";
             }
-             else{              
+             else{
               $img = $producto->fprincipal();
               $nombre = $producto->nombreProd();
               $puntos = $producto->puntos();
@@ -46,7 +46,7 @@ class GestionProducto{
               while( $row = mysqli_fetch_assoc($rs)) {
                $producto[] = GestionProducto::guardarProducto($row['id']);
               }
-              $result = $producto;           
+              $result = $producto;
               $rs->free();
             }
            } else {
@@ -68,7 +68,7 @@ class GestionProducto{
               else{
                 echo 'No ha encontrado el producto';
               }
-          }
+            }
            unset($row);
         }
     }
