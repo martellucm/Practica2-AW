@@ -38,7 +38,7 @@ class GestionProducto{
         public static function getMaxProd(){
            $app = Aplicacion::getSingleton();
            $conn = $app->conexionBd();
-           $query = sprintf("SELECT `id` FROM `producto` WHERE `puntos` >= 6 ORDER BY `puntos` DESC");
+           $query = sprintf("SELECT `id` FROM `producto` WHERE `puntos` > 6 ORDER BY `puntos` DESC");
            $rs = $conn->query($query);
            $result = false;
            if ($rs) {
@@ -58,15 +58,15 @@ class GestionProducto{
 
          public static function mostrarProd(){
           $producto = GestionProducto::getMaxProd();
+           $i = 0;
             foreach ($producto as &$row) {
-              if(is_array($row)){
-                $img = $row['img'];
-                echo '<div id="products"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
-                echo "<p>".$row['nombre']."</p>";
-                echo "<p>".$row['puntos']."</p> </div>";
-              }
-              else{
-                echo 'No ha encontrado el producto';
+              $img = $row['img'];
+              echo '<div id="products"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
+              echo "<p>".$row['nombre']."</p>";
+              echo "<p>".$row['puntos']."</p> </div>";
+              $i++;
+              if ($i >= 3){
+                break;
               }
             }
            unset($row);
