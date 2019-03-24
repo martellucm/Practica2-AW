@@ -31,14 +31,14 @@ class Product {
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM producto P WHERE P.id = '%s'", $conn->real_escape_string($id));
+        $query = sprintf("SELECT * FROM producto P WHERE P.id = '$id' ");
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
                 $product = new Product($fila['nombreProd'], $fila['puntos'], $fila['descript'], $fila['edad'], $fila['jugadores'], $fila['link'], $fila['empresa'], $fila['num_votaciones'] ,$fila['fprincipal']);
-                $product->id = $fila['id'];
+                $product->id = $id;
                 $result = $product;
             }
             $rs->free();
@@ -212,14 +212,15 @@ class Product {
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE producto P SET puntos='%s' , num_votaciones='%s 'WHERE P.id= '%id'"
+        $id = intval($producto['id']);
+        $query=sprintf("UPDATE producto P SET puntos='%s' , num_votaciones='%s 'WHERE P.id= '$id'"
             , $conn->real_escape_string($producto['puntos'])
             , $conn->real_escape_string($producto['num_votaciones'])
-            , $producto['id']);
+            );
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
                 echo "No se ha podido actualizar el producto: " . $producto['id'];
-                echo $producto['puntos'];
+                var_dump($id);
                 exit();
             }
         } else {

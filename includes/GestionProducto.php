@@ -124,6 +124,7 @@ class GestionProducto{
 
 
         public static function actualizaPuntuacion($val, $id){
+          $producto = null;
           $producto = GestionProducto::guardarProducto($id);
           $producto['puntos'] = (($producto['puntos'] * $producto['num_votaciones']) + $val)/($producto['num_votaciones']+1);
           $producto['num_votaciones']= $producto['num_votaciones']+1;
