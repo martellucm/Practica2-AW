@@ -1,11 +1,11 @@
-<?php 
+<?php
 	require_once __DIR__.'/config.php';
 	require_once __DIR__.'/Usuario.php';
 	require_once __DIR__.'/Form.php';
-	
+
 	class FormularioLogin extends Form{
-		
-		protected function procesaFormulario($datos){	
+
+		protected function procesaFormulario($datos){
 
 			if (! isset($datos['login']) ) {
 				header('Location: login.php');
@@ -35,7 +35,7 @@
 					//if(false){
 						$_SESSION['login'] = true;
 						$_SESSION['nombre'] = $nombreUsuario;
-						$_SESSION['esAdmin'] = strcmp($fila['rol'], 'admin') == 0 ? true : false;
+						$_SESSION['esAdmin'] = $usuario->rol() === 'admin' ? true : false;
 						return 'index.php';
 
 					}
@@ -44,22 +44,22 @@
 					}
 				}
 			}
-				
+
 			return $erroresFormulario;
-						
+
 		}
-		
-		
+
+
 		 protected function generaCamposFormulario($datosIniciales)
 		{
 			$nombrUsu = '';
 			$passw = '';
-			
+
 			/*
-			* En caso de que hubiera un error se mantienen 
+			* En caso de que hubiera un error se mantienen
 			* los datos para que puedas modificarlos
 			*/
-			
+
 			if(isset($datosIniciales['login'])){
 				$nombrUsu = $datosIniciales['nombreUsuario'];
 				$passw = $datosIniciales['password']; // Opcional
@@ -77,9 +77,9 @@
 			$html .= '</fieldset>';
 			return $html;
 		}
-		
+
 	}
-	
+
 ?>
 
 <div id="contenido">

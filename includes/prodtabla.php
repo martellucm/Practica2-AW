@@ -16,9 +16,18 @@ require_once __DIR__.'/includes/config.php';
 
 	       <?php require'leftnews.php'?>
 	    </div>
-
+      <div class="saludo">
+			<?php
+				if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
+					?>
+					<a href="">Añadir </a>
+					<a href="">Eliminar</a>
+					<?php
+				}
+				?>
+		</div>
       <?php require 'includes/prodtotal.php' ?>
-	 </div>   
+	 </div>
 	</div>
 </body>
 </html>

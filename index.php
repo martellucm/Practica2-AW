@@ -15,7 +15,9 @@ require_once __DIR__.'/includes/config.php';
 	    <div id = "news">
 	       <?php require'leftnews.php'?>
 	    </div>
-	    <div id = "publi"></div>
+	    <div id = "publi">
+        <img class="foto_publi" src="img/publi.jpg" width="784" height="200">
+      </div>
 	   	<div id = "month">
         <h2>Ganador del MES</h2>
 	    <?php

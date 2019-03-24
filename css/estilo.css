@@ -76,7 +76,7 @@
 	}
 /*index*/
 
-	
+
 	div#news{
 		background-color: #8FBC8F;
 		display: flex;
@@ -116,8 +116,8 @@
 		height: 250px;
 		width: 250px;
 		margin-left: 18%;
-	
-	}	
+
+	}
 	div#month{
 		background-color: tomato;
 		display: inline-grid;
@@ -135,19 +135,25 @@
 		line-height: 40px;
 		text-shadow: 2px 2px black;
 		margin: auto;
-	}		
+	}
 
 	div#month img{
 		height: 250px;
 		width: 250px;
 		margin-left: 5%;
 	}
-		
+
 	div#publi{
 		height: 200px;
 		float: top;
 		margin-left: 10%;
 	}
+	.foto_publi{
+			display: block;
+			width: 784px;
+			height: 200px;
+	}
+
 	.productos{
 		margin-left: 20%;
 		margin-right: 10%;
@@ -220,7 +226,7 @@
 	table, th, td {
   		border: 1px solid black;
   		padding: 20px;
-   		margin-left:auto; 
+   		margin-left:auto;
 	 	margin-right:auto;
   		font-size: 18px;
 		font-family: "Arial", serif;
