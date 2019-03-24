@@ -8,7 +8,7 @@
           echo "<p>No puedes votar</p>";
         } else {
 		echo '<div>';
-		echo	 '<p>Pon tu nota(0-10): </p>';
+		echo	 '<p>VALORA ESTE JUEGO <br> (0 - 10) </p>';
 
 		echo	 '<form action = "includes/ValorarProducto.php?id='.$id.'" method="POST">
 			 <input type="number" name="val" value="0" min="0" max="10"><br>
