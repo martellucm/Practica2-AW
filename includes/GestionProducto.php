@@ -17,6 +17,7 @@ class GestionProducto{
               $jugadores = $producto->jugadores();
               $link = $producto->link();
               $empresa = $producto->empresa();
+              $num_votaciones = $producto->num_votaciones();
               $id = $producto->id();
 
               $arr = array(
@@ -28,7 +29,8 @@ class GestionProducto{
                 "jugadores" => $jugadores,
                 "link" => $link,
                 "empresa" => $empresa,
-                 "img" => $img,
+                "num_votaciones" => $num_votaciones,
+                "img" => $img,
 
               );
             }

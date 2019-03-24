@@ -11,9 +11,10 @@ class Product {
 	private $jugadores;
 	private $link;
 	private $empresa;
+    private $num_votaciones;
   private $fprincipal;
 
-	private function __construct($nombreProd, $puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
+	private function __construct($nombreProd, $puntos, $descript, $edad, $jugadores, $link, $empresa, $num_votaciones, $fprincipal)
     {
         $this->nombreProd= $nombreProd;
         $this->puntos = $puntos;
@@ -22,6 +23,7 @@ class Product {
         $this->jugadores = $jugadores;
         $this->link = $link;
         $this->empresa = $empresa;
+        $this->num_votaciones = $num_votaciones;
         $this->fprincipal = $fprincipal;
     }
 
@@ -35,7 +37,7 @@ class Product {
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $product = new Product($fila['nombreProd'], $fila['puntos'], $fila['descript'], $fila['edad'], $fila['jugadores'], $fila['link'], $fila['empresa'], $fila['fprincipal']);
+                $product = new Product($fila['nombreProd'], $fila['puntos'], $fila['descript'], $fila['edad'], $fila['jugadores'], $fila['link'], $fila['empresa'], $fila['num_votaciones'] ,$fila['fprincipal']);
                 $product->id = $fila['id'];
                 $result = $product;
             }
@@ -63,7 +65,7 @@ class Product {
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $product = new Product($fila['nombreProd'], $fila['puntos'], $fila['descript'], $fila['edad'], $fila['jugadores'], $fila['link'], $fila['empresa'], $fila['fprincipal']);
+                $product = new Product($fila['nombreProd'], $fila['puntos'], $fila['descript'], $fila['edad'], $fila['jugadores'], $fila['link'], $fila['empresa'],$fila['num_votaciones'], $fila['fprincipal']);
                 $product->id = $fila['id'];
                 $result = $product;
             }
@@ -82,13 +84,13 @@ class Product {
         }
         return self::inserta($producto);
     }
-	public static function crea($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
+	public static function crea($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $num_votaciones, $fprincipal)
     {
         $product = self::buscaProducoNom($nombreProd);
         if ($product instanceof Product) {
             return false;
         }
-        $product = new Product($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal);
+        $product = new Product($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $num_votaciones, $fprincipal);
         return self::guarda($product);
     }
 
@@ -96,7 +98,7 @@ class Product {
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa,fprincipal) VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa, num_votaciones ,fprincipal) VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($producto->nombreProd)
             , $conn->real_escape_string($producto->puntos)
             , $conn->real_escape_string($producto->descript)
@@ -104,6 +106,7 @@ class Product {
         	  , $conn->real_escape_string($producto->jugadores)
             , $conn->real_escape_string($producto->link)
             , $conn->real_escape_string($producto->empresa)
+            , $conn->real_escape_string($producto->num_votaciones)
             , $conn ->real_escape_string($producto->fprincipal));
         if ( $conn->query($query) ) {
             $producto->id = $conn->insert_id;
@@ -114,11 +117,11 @@ class Product {
         return $producto;
     }
 
-     private static function actualiza($producto)
+  private static function actualiza($producto)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE producto P SET nombreProd = '%s', puntos='%s', descript='%s', edad='%s', jugadores= '%s', link= '%s', empresa='%s' WHERE P.id=%i"
+        $query=sprintf("UPDATE producto P SET nombreProd = '%s', puntos='%s', descript='%s', edad='%s', jugadores= '%s', link= '%s', empresa='%s', num_votaciones='%s ' WHERE P.id=%i"
             , $conn->real_escape_string($producto->nombreProd)
             , $conn->$producto->puntos
             , $conn->real_escape_string($producto->descript)
@@ -127,6 +130,7 @@ class Product {
             , $conn->$producto->jugadores
             , $conn->real_escape_string($producto->link)
             , $conn->real_escape_string($producto->empresa)
+            , $conn->real_escape_string($producto->num_votaciones)
             ,$conn ->$producto->fprincipal
             , $producto->id);
         if ( $conn->query($query) ) {
@@ -171,6 +175,10 @@ class Product {
     }
     public function empresa(){
     	return $this->empresa;
+    }
+
+    public function num_votaciones(){
+        return $this->num_votaciones;
     }
     public function fprincipal(){
         return $this->fprincipal;
