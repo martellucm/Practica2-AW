@@ -51,7 +51,7 @@ class RegistroProducto extends Form {
 				if (! $producto ) {
 					$erroresFormulario[] = "El producto ya existe";
 				} else {
-					return 'includes/RegistroProducto.php';
+					return 'prodtabla.php';
 				}
 			}
 
