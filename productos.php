@@ -17,7 +17,10 @@ require_once __DIR__.'/includes/config.php';
 	       <?php require'leftnews.php'?>
 	    </div>
       <div id = "reacciones">
-           <?php require 'ReaccionesProducto.php' ?>
+           <?php 
+           require_once __DIR__.'/ReaccionesProducto.php';
+           Valoracion::setPuntuacion($_GET['id']);
+            ?>
       </div>
       <div id = "producto_total">
            <?php require 'includes/muestraProducto.php' ?>
