@@ -29,12 +29,12 @@ require_once __DIR__.'/includes/Usuario.php';
 				echo '<div class="user_poin"><p>Puntos obtenidos en torneos: '.$user->ptosTourn().'</p></div>';
 				//echo '<div class="user_avat"><p>Avatar: '.$user->avatar().'</p></div>';
 				echo '<div class="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
-				echo	 '<form action = "editarUsuario.php">
-					<input type="submit" value="Editar">
-					</form>';
 				echo '</div>';
 			}
 		?>
 	</div>
+	
+	
+	
 </body>
 </html>
