@@ -205,7 +205,8 @@ class Product {
             , $producto['id']);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el producto: " . $producto->id;
+                echo "No se ha podido actualizar el producto: " . $producto['id'];
+                echo $producto['puntos'];
                 exit();
             }
         } else {
