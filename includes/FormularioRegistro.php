@@ -48,7 +48,7 @@
 			}
 			
 			if (count($erroresFormulario) === 0) {
-				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', 'noob', 'user', $descrip, $cumple);
+				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', 'noob', 'user', $descrip, $cumple, $fprincipal);
 				if (! $usuario ) {
 					$erroresFormulario[] = "El usuario ya existe";
 				} else {
@@ -57,6 +57,8 @@
 					return 'index.php';
 				}
 			}
+			
+			$fprincipal = isset($datos['fprincipal']) ? $datos['fprincipal'] : null;
 			
 			return $erroresFormulario;	
 		}
@@ -68,6 +70,7 @@
 			$rol = '';
 			$descr = '';
 			$cumple = '';
+			$fprincipal = null;
 			
 			/*
 			* En caso de que hubiera un error se mantienen 
@@ -82,6 +85,7 @@
 				$rol = 'user';
 				$descr = $datosIniciales['descrip'];
 				$cumple = $datosIniciales['cumple'];
+				$fprincipal = $datosIniciales['fprincipal'];
 			}
 			
 			$html = '';
@@ -106,6 +110,11 @@
 			$html .='	<div class="grupo-control">';
 			$html .='		<label>Fecha de nacimiento:</label> <input class="control" type="date" name="cumple" value="'.$cumple.'" required />';
 			$html .='	</div>';
+			
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Foto principal:</label> <input class="control" type="file" name="fprincipal" value="'.$fprincipal.'" required />';
+			$html .='	</div>';
+
 			
 			$html .='	<div class="grupo-control"><button type="submit" name="registro">Registrar</button></div>';
 			$html .='</fieldset>';

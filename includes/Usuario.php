@@ -87,13 +87,13 @@ class Usuario
         return $result;
     }
 
-    public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
+    public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple, $fprincipal)
     {
         $user = self::buscaUsuario($nombreUsuario);
         if ($user) {
             return false;
         }
-        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple);
+        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple, $fprincipal);
         return self::guarda($user);
     }
 
@@ -127,7 +127,7 @@ class Usuario
             , $conn->real_escape_string($usuario->rol)
             , $conn->real_escape_string($usuario->descrip)
             , $conn->real_escape_string($usuario->cumple)
-			, $conn->NULL);
+			, $conn->usuario->fprincipal);
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
         } else {
@@ -142,7 +142,7 @@ class Usuario
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("UPDATE usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s',
-						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', WHERE U.id=%i"
+						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', fprincipal='%s', WHERE U.id=%i"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
@@ -154,6 +154,7 @@ class Usuario
             , $conn->real_escape_string($usuario->rol)
             , $conn->real_escape_string($usuario->descrip)
             , $conn->real_escape_string($usuario->cumple)
+			, $conn->usuario->fprincipal
             , $usuario->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
