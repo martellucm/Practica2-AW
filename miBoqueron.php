@@ -16,8 +16,12 @@ require_once __DIR__.'/includes/Usuario.php';
 			$user = Usuario::buscaUsuario($_SESSION['nombre']);
 			if($user instanceof Usuario){
 				echo '<div>';
-				echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" /></div>';
-				
+				if(empty($user->fprincipal())){
+					echo '<div><img src="img/ducks.jpg"/></div> ';
+				}
+				else{
+					echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" /></div>';
+				}
 				echo '<div class="user_nick"><h1>Nickname: '.$user->nombreUsuario().'</h1></div>';
 				echo '<div class="user_name"><h2>Nombre completo: '.$user->nombre().'</h2></div>';
 				echo '<div class="user_rol"><h2>Rol: '.$user->rol().'</h2></div>';
