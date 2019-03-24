@@ -25,8 +25,6 @@ require_once __DIR__.'/includes/config.php';
       <div id = "producto_total">
            <?php require 'includes/muestraProducto.php' ?>
       </div>
-    
-
 	 </div>   
 	</div>
 </body>
