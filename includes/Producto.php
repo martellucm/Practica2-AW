@@ -117,21 +117,20 @@ class Product {
         return $producto;
     }
 
-  private static function actualiza($producto)
+  public static function actualiza($producto)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("UPDATE producto P SET nombreProd = '%s', puntos='%s', descript='%s', edad='%s', jugadores= '%s', link= '%s', empresa='%s', num_votaciones='%s ' WHERE P.id=%i"
             , $conn->real_escape_string($producto->nombreProd)
-            , $conn->$producto->puntos
+            , $conn->real_escape_string($producto->puntos)
             , $conn->real_escape_string($producto->descript)
-            , $conn->$producto->edad
-            , $conn->$producto->jugadores
-            , $conn->$producto->jugadores
+            , $conn->real_escape_string($producto->edad)
+            , $conn->real_escape_string($producto->jugadores)
             , $conn->real_escape_string($producto->link)
             , $conn->real_escape_string($producto->empresa)
             , $conn->real_escape_string($producto->num_votaciones)
-            ,$conn ->$producto->fprincipal
+            , $conn ->real_escape_string($producto->fprincipal)
             , $producto->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {

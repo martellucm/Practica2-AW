@@ -47,7 +47,7 @@ class RegistroProducto extends Form {
 			$img = isset($datos['_image']) ? $datos['_image'] : null;
 
 			if (count($erroresFormulario) === 0) {
-				$producto = Product::crea($nombreProducto, 0, $descrip, $edad, $jugadores,$link,$empresa,$img);
+				$producto = Product::crea($nombreProducto, 0, $descrip, $edad, $jugadores,$link,$empresa, '0',$img);
 				if (! $producto ) {
 					$erroresFormulario[] = "El producto ya existe";
 				} else {
