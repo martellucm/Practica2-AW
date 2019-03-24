@@ -16,8 +16,8 @@ class RegistroProducto extends Form {
 
 			$nombreProducto = isset($datos['_nombreProducto']) ? $datos['_nombreProducto'] : null;
 
-			if ( empty($nombreProducto) || mb_strlen($nombreProducto) < 5 ) {
-				$erroresFormulario[] = "El nombre del producto tiene que tener una longitud de al menos 5 caracteres.";
+			if ( empty($nombreProducto) || mb_strlen($nombreProducto) < 1 ) {
+				$erroresFormulario[] = "El nombre del producto tiene que tener una longitud de al menos 1 caracter.";
 			}
 
 			$descrip = isset($datos['_descrip']) ? $datos['_descrip'] : null;
