@@ -16,6 +16,13 @@
 			 </form>';
 
 		echo	'<p>Comentarios</p>';
+
+		if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
+            /* echo   '<form action = "ModificarProducto.php?id='.$_GET['id'].'"method="POST"> <input type="submit" value="Modificar">
+              </form>';*/
+             echo '<a href="ModificarProducto.php?id='.$id.'"> Modificar </a>';
+           }
+           
 		echo' </div>';
 		}
 	}

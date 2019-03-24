@@ -116,7 +116,20 @@ class Product {
         }
         return $producto;
     }
-
+    
+     public static function actualizaProduct($id,$nombreProd,$descript, $edad, $jugadores, $link, $empresa){
+             $app = Aplicacion::getSingleton();
+            $conn = $app->conexionBd();
+            $query=sprintf("UPDATE producto SET nombreProd = '%s', descript='%s', edad='%s', jugadores= '%s', link= '%s', empresa='%s' WHERE id='%i'"
+                , $conn->real_escape_string($nombreProd)
+                , $conn->real_escape_string($descript)
+                , $conn->real_escape_string($edad)
+                , $conn->real_escape_string($jugadores)
+                , $conn->real_escape_string($link)
+                , $conn->real_escape_string($empresa)
+                , $id);
+             $conn->query($query);        
+        }
   private static function actualiza($producto)
     {
         $app = Aplicacion::getSingleton();
