@@ -58,13 +58,23 @@ class GestionProducto{
         } //Obtiene los productos de puntuacion >6
 
         public static function mostrarProductoCorto($row){
-          $img = $row['img'];
-          echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div><img src="data:image/jpg; base64,'.base64_encode($img).'" /></a>';
-          echo '<div class ="name_product"> <p>'.$row['nombre'].'</p></div>';
-          echo '<div class ="p_product"> <p> Puntuación:'.$row['puntos'].'</p> </div></div>';
+         $img = $row['img'];
+         echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div><img src="data:image/jpg; base64,'.base64_encode($img).'" /></a>';
+         echo '<div class ="name_product"> <p>'.$row['nombre'].'</p></div>';
+         echo '<div class ="p_product"> <p> Puntuación:'.$row['puntos'].'</p> </div>';
+         ?>
+           <div class ="name_product">
+           <?php
+           if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
+             ?>
+             <a href="">Eliminar</a>
+             <?php
+           }
+           ?>
+           </div></div>
+           <?php
 
-        }//Muestra la forma corta de un producto
-
+       }//Muestra la forma corta de un producto
         public static function listadoProductos(){
           $producto = GestionProducto::getProducts();
             if(is_array($producto)){
