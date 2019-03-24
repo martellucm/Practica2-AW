@@ -38,7 +38,7 @@ class Usuario
         return $result;
     }
 
-    public static function buscaUsuarioID($nombreUsuario)
+    public static function buscaUsuarioID($id)
     {
       $app = Aplicacion::getSingleton();
       $conn = $app->conexionBd();
