@@ -84,32 +84,32 @@ class RegistroProducto extends Form {
 			
 			$html = '';
 			$html .='	<fieldset>';
-			$html .='	<div class="grupo-control">';
+			$html .='	<div class="formNuProd">';
 			$html .='		<label>Nombre del producto:</label> <input class="control" type="text" name="_nombreProducto" value="'.$nombrProd .'" required />';
 			$html .='	</div>';
-			$html .='	<div class="grupo-control">';
+			$html .='	<div class="formNuProd">';
 			$html .='		<label>Descripción:</label> <input class="control" type="text" name="_descrip" value="'.$descrip.'" required />';
 			$html .='	</div>';
-			$html .='	<div class="grupo-control">';
+			$html .='	<div class="formNuProd">';
 			$html .='		<label>Edad:</label> <input class="control" type="number" name="_edad" value="'.$edad.'" required />';
 			$html .='	</div>';			
-			$html .='	<div class="grupo-control">';
+			$html .='	<div class="formNuProd">';
 			$html .='		<label>Jugadores:</label> <input class="control" type="number" name="_jugadores" value="'.$jugadores.'" required />';
 			$html .='	</div>';
-			$html .='	<div class="grupo-control">';
+			$html .='	<div class="formNuProd">';
 			$html .='		<label>link:</label> <input class="control" type="url" name="_link" value="'.$link.'" required />';
 			$html .='	</div>';
-			$html .='	<div class="grupo-control">';
+			$html .='	<div class="formNuProd">';
 			$html .='		<label>Empresa:</label> <input class="control" type="text" name="_empresa" value="'.$empresa.'" required />';
 			$html .='	</div>';
 
-			$html .='	<div class="grupo-control">';
+			$html .='	<div class="formNuProd">';
 			$html .='		<label>Foto principal:</label> <input class="control" type="file" name="_image" value="'.$img.'" required />';
 			$html .='	</div>';
 
 
 
-			$html .='	<div class="grupo-control"><button type="submit" name="registro">Registrar</button></div>';
+			$html .='	<div class="formNuProd"><button type="submit" name="registro">Registrar</button></div>';
 			$html .='</fieldset>';
 			return $html;
 		}
