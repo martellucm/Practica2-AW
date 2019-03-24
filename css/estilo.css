@@ -255,8 +255,8 @@
 
 	}
 	div#desc_total{
-		margin-top: auto;
-		margin-left: auto;
+		
+		text-align: center;
 	}
 	div#edad_total{
 
@@ -283,3 +283,14 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+
+	div#reacciones p{
+		background-color: #5DADE2;
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
+	}
+
