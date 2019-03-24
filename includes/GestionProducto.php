@@ -66,9 +66,8 @@ class GestionProducto{
            <div class ="name_product">
            <?php
            if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
-             ?>
-             <a href="">Eliminar</a>
-             <?php
+             echo   '<form action = "EliminarProducto.php?id='.$row['id'].'"method="POST"> <input type="submit" value="Eliminar">
+              </form>';
            }
            ?>
            </div></div>
