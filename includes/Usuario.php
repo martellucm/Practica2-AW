@@ -38,6 +38,31 @@ class Usuario
         return $result;
     }
 
+    public static function buscaUsuarioID($nombreUsuario)
+    {
+      $app = Aplicacion::getSingleton();
+      $conn = $app->conexionBd();
+      $query = sprintf("SELECT * FROM usuarios U WHERE id = '%s'", $conn->real_escape_string($id));
+      $rs = $conn->query($query);
+      $result = false;
+      if ($rs) {
+          if ( $rs->num_rows == 1) {
+              $fila = $rs->fetch_assoc();
+              $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
+            $fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
+            $fila['avatar'], $fila['rol'], $fila['descrip'],
+            $fila['cumple'], $fila['fprincipal']);
+              $user->id = $fila['id'];
+              $result = $user;
+          }
+          $rs->free();
+      } else {
+          echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+          exit();
+      }
+      return $result;
+    }
+
     public static function getWW(){
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
@@ -199,17 +224,17 @@ class Usuario
     {
         return $this->nombreUsuario;
     }
-	
+
 	public function nombre()
     {
         return $this->nombre;
     }
-	
+
 	public function email()
     {
         return $this->email;
     }
-	
+
 	public function cumple()
     {
         return $this->cumple;
@@ -218,15 +243,15 @@ class Usuario
     public function ptosTourn(){
         return $this->ptosTourn;
     }
-	
+
 	public function ptosForum(){
         return $this->ptosForum;
     }
-	
+
 	public function ptosProd(){
         return $this->ptosProd;
     }
-	
+
 	public function descrip(){
         return $this->descrip;
     }
