@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once __DIR__.'/config.php';
 	require_once __DIR__.'/Form.php';
 	require_once __DIR__.'/Producto.php';
@@ -6,7 +6,7 @@
 class RegistroProducto extends Form {
 
 
-	protected function procesaFormulario($datos){	
+	protected function procesaFormulario($datos){
 			if (! isset($_POST['registro']) ) {
 				header('Location: registro.php');
 				exit();
@@ -28,34 +28,34 @@ class RegistroProducto extends Form {
 			$edad = isset($datos['_edad']) ? $datos['_edad'] : null;
 			if ( empty($edad)) {
 				$erroresFormulario[] = "Introduce la edad recomendada";
-			}			
+			}
 			$jugadores = isset($datos['_jugadores']) ? $datos['_jugadores'] : null;
 			if ( $jugadores  == 0) {
 				$erroresFormulario[] = "Debe introducir el numero de jugadores.";
 			}
-			
+
 			$link = isset($datos['_link']) ? $datos['_link'] : null;
 			if ( empty($link)) {
 				$erroresFormulario[] = "Debe introducir el link de compra.";
 			}
-			
+
 			$empresa = isset($datos['_empresa']) ? $datos['_empresa'] : null;
 			if ( empty($empresa)) {
 				$erroresFormulario[] = "Imtroduce el nombre de la empresa propietaria.";
 			}
 
 			$img = isset($datos['_image']) ? $datos['_image'] : null;
-			
+
 			if (count($erroresFormulario) === 0) {
 				$producto = Product::crea($nombreProducto, 0, $descrip, $edad, $jugadores,$link,$empresa,$img);
 				if (! $producto ) {
 					$erroresFormulario[] = "El producto ya existe";
 				} else {
-					return 'RegistroProducto.php';
+					return 'includes/RegistroProducto.php';
 				}
 			}
-			
-			return $erroresFormulario;	
+
+			return $erroresFormulario;
 		}
 
 	protected function generaCamposFormulario($datosIniciales){
@@ -68,10 +68,10 @@ class RegistroProducto extends Form {
 			$img = null;
 
 			/*
-			* En caso de que hubiera un error se mantienen 
+			* En caso de que hubiera un error se mantienen
 			* los datos para que puedas modificarlos
 			*/
-			
+
 			if(isset($datosIniciales['registro'])){
 				$nombrProd = $datosIniciales['_nombreProducto'];
 				$descrip = $datosIniciales['_descrip'];
@@ -81,7 +81,7 @@ class RegistroProducto extends Form {
 				$empresa = $datosIniciales['_empresa'];
 				$img = $datosIniciales['_image'];
 			}
-			
+
 			$html = '';
 			$html .='	<fieldset>';
 			$html .='	<div class="formNuProd">';
@@ -92,7 +92,7 @@ class RegistroProducto extends Form {
 			$html .='	</div>';
 			$html .='	<div class="formNuProd">';
 			$html .='		<label>Edad:</label> <input class="control" type="number" name="_edad" value="'.$edad.'" required />';
-			$html .='	</div>';			
+			$html .='	</div>';
 			$html .='	<div class="formNuProd">';
 			$html .='		<label>Jugadores:</label> <input class="control" type="number" name="_jugadores" value="'.$jugadores.'" required />';
 			$html .='	</div>';

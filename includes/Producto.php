@@ -11,7 +11,7 @@ class Product {
 	private $jugadores;
 	private $link;
 	private $empresa;
-    private $fprincipal;
+  private $fprincipal;
 
 	private function __construct($nombreProd, $puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
     {
@@ -46,6 +46,29 @@ class Product {
         }
         return $result;
     }
+
+	public static function buscaProducoNom($nombreProd)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("SELECT * FROM producto P WHERE P.nombreProd = '%s'", $conn->real_escape_string($nombreProd));
+        $rs = $conn->query($query);
+        $result = false;
+        if ($rs) {
+            if ( $rs->num_rows == 1) {
+                $fila = $rs->fetch_assoc();
+                $product = new Product($fila['nombreProd'], $fila['puntos'], $fila['descript'], $fila['edad'], $fila['jugadores'], $fila['link'], $fila['empresa'], $fila['fprincipal']);
+                $product->id = $fila['id'];
+                $result = $product;
+            }
+            $rs->free();
+        } else {
+            echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+        return $result;
+    }
+
      public static function guarda($producto)
     {
         if ($producto->id !== null) {
@@ -55,8 +78,8 @@ class Product {
     }
 	public static function crea($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal)
     {
-        $product = self::buscaProduco($nombreProd);
-        if ($product) {
+        $product = self::buscaProducoNom($nombreProd);
+        if ($product instanceof Product) {
             return false;
         }
         $product = new Product($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $fprincipal);
