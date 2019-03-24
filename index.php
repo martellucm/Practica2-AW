@@ -17,34 +17,23 @@ require_once __DIR__.'/includes/config.php';
 	    </div>
 	    <div id = "publi"></div>
 	   	<div id = "month">
+        <h2>Ganador del MES</h2>
 	    <?php
         require_once __DIR__.'/includes/GestionaUsuario.php';
-          /*
-	      	  $producto = GestionProducto::mostrarProducto('Galleta');
-            if(is_array($producto)){
-               $img = $producto['img'];
-    	        	echo '<div id="prodM"><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
-    		        echo "<p>".$producto['nombre']."</p>";
-    		        echo "<p>".$producto['puntos']."</p> </div>";
-            }
-            else{
-              echo "<p>No ha encontrado el producto</p>";
-            }*/
-
-            GestionUsuario::mostrarWW();
-           
+           GestionUsuario::mostrarWW();
 	      ?>
         </div>
 	    <div id = "week">
+        <h2>Ganador de la SEMANA</h2>
 			<?php
 				GestionUsuario::mostrarWW();
 			?>
 		</div>
-    <div id = "productos">
-	     <div id = "products">
+    <div class = "productos">
+	     <div class = "products">
         <?php
           require_once __DIR__.'/includes/GestionProducto.php';
-           GestionProducto::mostrarProd();
+           GestionProducto::mejoresProductos('3');
         ?> </div>
     </div>
 	</div>

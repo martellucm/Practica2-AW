@@ -77,31 +77,71 @@
 
 /*index*/
 
+	
 	div#news{
 		background-color: #8FBC8F;
 		display: flex;
 		float: left;
 		margin-top: 7%;
 		min-height: 400px;
+
+	}
+	div#news h3{
+		background-color: #5DADE2;
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
 	}
 
 	div#week{
 		background-color: tomato;
-		display: inline-block;
-		margin-left: 15%;
+		display: inline-grid;
+		margin-left: 10%;
 		margin-top: 2%;
 		padding: 1%;
-		min-height: 250px;
-		min-width: 250px;
 	}
+	div#week h2{
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
+		margin: auto;
+	}
+
+	div#week img{
+		height: 250px;
+		width: 250px;
+		margin-left: 18%;
+	
+	}	
 	div#month{
 		background-color: tomato;
-		display: inline-block;
+		display: inline-grid;
 		margin-left:15%;
 		margin-top: 2%;
 		padding: 1%;
-		min-height: 250px;
-		min-width: 250px;
+
+	}
+
+	div#month h2{
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
+		margin: auto;
+	}		
+
+	div#month img{
+		height: 250px;
+		width: 250px;
+		margin-left: 5%;
 	}
 		
 	div#publi{
@@ -109,23 +149,43 @@
 		float: top;
 		margin-left: 10%;
 	}
-	div #productos{
-		margin-left: 15%;
-		margin-right:10%;
+	.productos{
+		margin-left: 20%;
+		margin-right: 10%;
+		display: block;
+		float: center;
 	}
-	div#products{
-		background-color: blueviolet;
+	.products{
+		background-color: #A569BD;
 		display: inline-grid;
 		margin-top: 5%;
 		margin-left: 10%;
 		position: bottom;
 		text-align: center;
+		border: 2px grey outset;
 	}
-	div#products img{
+	.name_product {
+		background-color: #58A8CB;
+		display: grid;
+		bottom: 0;
+	}
+
+	.name_product p{
+		 text-transform: uppercase;
+		 font-family: sans-serif;
+		 font-size: 120%;
+		 font-style: italic;
+
+	}
+
+	.p_product p{
+		color:#F4D03F;
+	}
+	.products img{
+		border: 2px grey outset;
 		height: 200px;
 		width: 200px;
 	}
-
 
 
 /*Fuentes y estilos para etiquetas universales -------*/
