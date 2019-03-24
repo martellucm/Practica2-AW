@@ -121,12 +121,15 @@ class GestionProducto{
          }
         }//Muestra los tres mejores productos
 
+
+
         public static function actualizaPuntuacion($val, $id){
           $producto = GestionProducto::guardarProducto($id);
-          $producto['puntos'] = (($producto['puntos'] * $producto['num_votaciones']) + $val)/$producto['num_votaciones']+1;
+          $producto['puntos'] = (($producto['puntos'] * $producto['num_votaciones']) + $val)/($producto['num_votaciones']+1);
           $producto['num_votaciones']= $producto['num_votaciones']+1;
-          Product::actualiza($producto);
+
+          $prod = Product::actualizapuntos($producto);
           
-        }
+        }//Sirve para valorar el juego
     }
  ?>

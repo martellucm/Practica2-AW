@@ -117,19 +117,19 @@ class Product {
         return $producto;
     }
 
-  public static function actualiza($producto)
+  private static function actualiza($producto)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE producto P SET nombreProd = '%s', puntos='%s', descript='%s', edad='%s', jugadores= '%s', link= '%s', empresa='%s', num_votaciones='%s ' WHERE P.id=%i"
-            , $conn->real_escape_string($producto->nombreProd)
+        $query=sprintf("UPDATE producto P SET nombreProd = '%s', puntos='%s', descript='%s', edad='%s', jugadores= '%s', link= '%s', empresa='%s', num_votaciones='%s ' WHERE P.id='%i'"
+            , $conn->real_escape_string($producto->nombre)
             , $conn->real_escape_string($producto->puntos)
             , $conn->real_escape_string($producto->descript)
-            , $conn->real_escape_string($producto->edad)
-            , $conn->real_escape_string($producto->jugadores)
+            , $conn->$producto->edad
+            , $conn->$producto->jugadores
             , $conn->real_escape_string($producto->link)
             , $conn->real_escape_string($producto->empresa)
-            , $conn->real_escape_string($producto->num_votaciones)
+            , $conn->$producto->num_votaciones
             , $conn ->real_escape_string($producto->fprincipal)
             , $producto->id);
         if ( $conn->query($query) ) {
@@ -183,6 +183,38 @@ class Product {
         return $this->fprincipal;
     }
 
+
+
+
+
+
+
+
+
+
+
+    /*-------------------*/
+
+    public static function actualizapuntos($producto)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query=sprintf("UPDATE producto P SET puntos='%s' , num_votaciones='%s 'WHERE P.id= '%id'"
+            , $conn->real_escape_string($producto['puntos'])
+            , $conn->real_escape_string($producto['num_votaciones'])
+            , $producto['id']);
+        if ( $conn->query($query) ) {
+            if ( $conn->affected_rows != 1) {
+                echo "No se ha podido actualizar el producto: " . $producto->id;
+                exit();
+            }
+        } else {
+            echo "Error al insertar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+            exit();
+        }
+
+        return $producto;
+    }
 }
 
 
