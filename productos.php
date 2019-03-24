@@ -16,10 +16,14 @@ require_once __DIR__.'/includes/config.php';
 
 	       <?php require'leftnews.php'?>
 	    </div>
-        <div id = "producto_total">
-
+      <div id = "reacciones">
+           <?php require 'ReaccionesProducto.php' ?>
+      </div>
+      <div id = "producto_total">
            <?php require 'includes/muestraProducto.php' ?>
       </div>
+    
+
 	 </div>   
 	</div>
 </body>

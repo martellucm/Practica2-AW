@@ -6,7 +6,7 @@
            $img = $producto['img'];
             echo '<div><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
             echo '<div id = "nombre_total"><p>'.$producto['nombre'].'</p></div>';
-            echo '<div id = "puntos_total"><p> Puntuación: '.$producto['puntos'].'Valorar</p></div>';
+            echo '<div id = "puntos_total"><p> Puntuación: '.$producto['puntos'].'</p></div>';
             echo '<div id = "desc_total"><p>'.$producto['descript'].'</p></div>';
             echo '<div id = "edad_total"><p> Edad: '.$producto['edad'].'</p></div>';
             echo '<div id = "jugadores_total"><p>Número de jugadores: '.$producto['jugadores'].'</p></div>';

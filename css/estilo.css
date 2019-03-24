@@ -269,3 +269,12 @@
 	div#empresa_total{
 
 	}
+	div#reacciones{
+		background-color: #8FBC8F;
+		display: inline-flex;
+		float: right;
+		margin-top: 7%;
+		min-height: 400px;
+
+	}
+

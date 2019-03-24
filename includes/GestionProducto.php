@@ -109,5 +109,12 @@ class GestionProducto{
            unset($row);
          }
         }//Muestra los tres mejores productos
+
+        public static function actualizaPuntuacion($val, $id){
+          $producto = GestionProducto::guardarProducto($id);
+          $producto['puntos'] = $producto['puntos'] + $val;
+          echo $producto['puntos'];
+
+        }
     }
  ?>
