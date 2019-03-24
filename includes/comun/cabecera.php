@@ -8,7 +8,7 @@
 		} else {
 			echo "<a href='registro.php'>Registro</a>";
 			echo "<a href='login.php'>Login</a>";
-			
+
 		}
 		?>
 	</div>
@@ -19,6 +19,11 @@
 			<li><a href='none_page.php'>Torneos</a></li>
 			<li><a href='none_page.php'>About us</a></li>
 			<li><a href='none_page.php'>Foro</a></li>
+			<?php
+			if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
+			?>
+			<li><a href='userTabla.php'>G.Usuarios</a></li>
+			<?php }?>
 		</ul>
 	</div>
 </div>

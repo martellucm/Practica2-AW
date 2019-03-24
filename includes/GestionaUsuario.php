@@ -25,5 +25,48 @@
             echo "<p>No hay un ganador claro</p>";
         }
       }
+
+	    public static function mostrarUsuarioCorto($row){
+         $img = $row->fprincipal();
+         echo '<div class ="products"><a href="usuarios.php?id='.$row->id().'"><div><img src="data:image/jpg; base64,'.base64_encode($img).'" ></div></a>';
+         echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
+         ?>
+           <div class ="name_product">
+             <a href="">Modificar</a>
+             <a href="">Eliminar</a>
+           </div></div>
+           <?php
+
+       }//Muestra la forma corta de un producto
+        public static function listadoUsuario(){
+          $user = GestionUsuario::getUsers();
+            if(is_array($user)){
+              foreach ($user as &$row) {
+               GestionUsuario::mostrarUsuarioCorto($row);
+            }
+          }
+        }//Sirve para la parte de producto y muestra todos los productos
+
+
+		public static function getUsers(){
+          $app = Aplicacion::getSingleton();
+           $conn = $app->conexionBd();
+           $query = sprintf("SELECT `id` FROM `usuarios`");
+           $rs = $conn->query($query);
+           $result = false;
+           if ($rs) {
+            if ($rs->num_rows > 0) {
+              while( $row = mysqli_fetch_assoc($rs)) {
+               $user[] = Usuario::buscaUsuarioID($row['id']);
+              }
+              $result = $user;
+              $rs->free();
+            }
+           } else {
+               echo "Error al consultar en la BD: (" . $conn->errno . ") " . utf8_encode($conn->error);
+               exit();
+           }
+           return $result;
+        }//Obtiene todos los productos
     }
 ?>
