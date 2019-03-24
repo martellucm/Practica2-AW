@@ -21,7 +21,6 @@ require_once __DIR__.'/includes/config.php';
         if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
           ?>
           <a href="">Añadir </a>
-          <a href="">Eliminar</a>
           <?php
         }
         ?>
