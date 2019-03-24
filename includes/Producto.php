@@ -46,7 +46,13 @@ class Product {
         }
         return $result;
     }
-
+        public static function eliminaProducto($id)
+    {
+        $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("DELETE FROM producto WHERE id = '%s'", $conn->real_escape_string($id));
+        $rs = $conn->query($query);
+    }
 	public static function buscaProducoNom($nombreProd)
     {
         $app = Aplicacion::getSingleton();
