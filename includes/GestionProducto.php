@@ -41,7 +41,7 @@ class GestionProducto{
         public static function getMaxProd(){
            $app = Aplicacion::getSingleton();
            $conn = $app->conexionBd();
-           $query = sprintf("SELECT `id` FROM `producto` WHERE `puntos` > 6 ORDER BY `puntos` DESC");
+           $query = sprintf("SELECT id FROM producto WHERE puntos > 6 ORDER BY puntos DESC");
            $rs = $conn->query($query);
            $result = false;
            if ($rs) {
@@ -61,11 +61,11 @@ class GestionProducto{
 
         public static function mostrarProductoCorto($row){
          $img = $row['img'];
-         echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div><img src="data:image/jpg; base64,'.base64_encode($img).'" /></a>';
+         echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div><img class="foto_publi" src="productos/'.$row['id'].'.jpg"></a>';
          echo '<div class ="name_product"> <p>'.$row['nombre'].'</p></div>';
          echo '<div class ="p_product"> <p> Puntuación:'.$row['puntos'].'</p> </div>';
          ?>
-           <div class ="name_product">
+           <div class ="eliminar_prod">
            <?php
            if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
              echo   '<form action = "EliminarProducto.php?id='.$row['id'].'"method="POST"> <input type="submit" value="Eliminar">
@@ -76,6 +76,7 @@ class GestionProducto{
            <?php
 
        }//Muestra la forma corta de un producto
+
         public static function listadoProductos(){
           $producto = GestionProducto::getProducts();
             if(is_array($producto)){

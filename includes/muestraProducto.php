@@ -4,7 +4,7 @@
      	$producto = GestionProducto::guardarProducto($id);
         if(is_array($producto)){
            $img = $producto['img'];
-            echo '<div><img src="data:image/jpg; base64,'.base64_encode($img).'" />';
+            echo '<div id = "img_total"><img class="foto_publi" src="productos/'.$id.'.jpg">';
             echo '<div id = "nombre_total"><p>'.$producto['nombre'].'</p></div>';
             echo '<div id = "puntos_total"><p> Puntuación: '.$producto['puntos'].'</p></div>';
             echo '<div id = "desc_total"><p>'.$producto['descript'].'</p></div>';

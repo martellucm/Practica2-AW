@@ -32,11 +32,9 @@ require_once __DIR__.'/includes/config.php';
 			?>
 		</div>
     <div class = "productos">
-	     <div class = "products">
         <?php
-          require_once __DIR__.'/includes/GestionProducto.php';
-           GestionProducto::mejoresProductos('3');
-        ?> </div>
+          require_once __DIR__.'/includes/GestionProducto.php';GestionProducto::mejoresProductos('3');
+        ?>
     </div>
 	</div>
 </body>
