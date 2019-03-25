@@ -14,13 +14,15 @@ require_once __DIR__.'/includes/Usuario.php';
 	<div id ="contenedor">
 		<?php
 			$user = Usuario::buscaUsuario($_SESSION['nombre']);
+			$id = $user->id();
+			$directorio = "img/users/$id.jpg";
 			if($user instanceof Usuario){
 				echo '<div id = "muestraUser">';
-				if(empty($user->fprincipal())){
-					echo '<div><img src="img/default_user.png"/></div> ';
+				if(@file_get_contents($directorio) == null){
+					echo '<div id = "img_user"><img src="img/users/default_user.png"/></div> ';
 				}
 				else{
-					echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" /></div>';
+					echo '<div id = "img_user"><img src='.$directorio.'>';
 				}
 				echo '<div id="user_nick"><h1>Nickname: '.$user->nombreUsuario().'</h1></div>';
 				echo '<div id"user_name"><h2>Nombre completo: '.$user->nombre().'</h2></div>';
@@ -33,9 +35,6 @@ require_once __DIR__.'/includes/Usuario.php';
 				echo '<div id="user_poin"><p>Puntos obtenidos en torneos: '.$user->ptosTourn().'</p></div>';
 				//echo '<div id="user_avat"><p>Avatar: '.$user->avatar().'</p></div>';
 				echo '<div id="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
-				//echo	 '<form action = "editarUsuario.php">
-				//	<input type="submit" value="Editar">
-				//	</form>';
 				echo '<a href="editarUsuario.php?id='.$user->id().'"> Modificar </a>';
 				echo '</div>';
 			}

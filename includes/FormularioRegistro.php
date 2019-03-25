@@ -50,7 +50,7 @@
 			$fprincipal = isset($datos['fprincipal']) ? $datos['fprincipal'] : null;
 			
 			if (count($erroresFormulario) === 0) {
-				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', 'noob', 'user', $descrip, $cumple, $fprincipal);
+				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', 'noob', 'user', $descrip, $cumple);
 				if (! $usuario ) {
 					$erroresFormulario[] = "El usuario ya existe";
 				} else {
@@ -111,6 +111,11 @@
 			$html .='		<label>Fecha de nacimiento:</label> <input class="control" type="date" name="cumple" value="'.$cumple.'" required />';
 			$html .='	</div>';
 			
+			$html .='	<form action="subeimagen.php" enctype="multipart/form-data" method="post">';
+			$html .='		<label for="imagen">Foto de perfil:</label> ';
+			$html .='		<input id="imagen" name="imagen" size="30" type="file" />';
+			//$html .='		<input type="submit" value="Cambiar datos" />';
+			$html .='	</form>';
 			//$html .='	<div class="grupo-control">';
 			//$html .='		<label>Foto principal:</label> <input class="control" type="file" name="fprincipal" value="'.$fprincipal.'" required />';
 			//$html .='	</div>';

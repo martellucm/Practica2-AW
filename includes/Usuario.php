@@ -26,7 +26,7 @@ class Usuario
                 $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
 							$fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
 							$fila['avatar'], $fila['rol'], $fila['descrip'],
-							$fila['cumple'], $fila['fprincipal']);
+							$fila['cumple']);
                 $user->id = $fila['id'];
                 $result = $user;
             }
@@ -51,7 +51,7 @@ class Usuario
               $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
             $fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
             $fila['avatar'], $fila['rol'], $fila['descrip'],
-            $fila['cumple'], $fila['fprincipal']);
+            $fila['cumple']);
               $user->id = $fila['id'];
               $result = $user;
           }
@@ -75,7 +75,7 @@ class Usuario
                 $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
               $fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
               $fila['avatar'], $fila['rol'], $fila['descrip'],
-              $fila['cumple'], $fila['fprincipal']);
+              $fila['cumple']);
                 $user->id = $fila['id'];
                 $result = $user;
             }
@@ -87,13 +87,13 @@ class Usuario
         return $result;
     }
 
-    public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple, $fprincipal)
+    public static function crea($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
     {
         $user = self::buscaUsuario($nombreUsuario);
         if ($user) {
             return false;
         }
-        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple, $fprincipal);
+        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple);
         return self::guarda($user);
     }
 
@@ -126,8 +126,7 @@ class Usuario
             , $conn->real_escape_string($usuario->avatar)
             , $conn->real_escape_string($usuario->rol)
             , $conn->real_escape_string($usuario->descrip)
-            , $conn->real_escape_string($usuario->cumple)
-			, $conn->usuario->fprincipal);
+            , $conn->real_escape_string($usuario->cumple));
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
         } else {
@@ -154,7 +153,6 @@ class Usuario
             , $conn->real_escape_string($usuario->rol)
             , $conn->real_escape_string($usuario->descrip)
             , $conn->real_escape_string($usuario->cumple)
-			, $conn->usuario->fprincipal
             , $usuario->id);
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
@@ -193,9 +191,7 @@ class Usuario
 
 	private $cumple;
 
-	private $fprincipal;
-
-    private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple, $fprincipal)
+    private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
     {
         $this->nombreUsuario= $nombreUsuario;
         $this->nombre = $nombre;
@@ -208,7 +204,6 @@ class Usuario
         $this->rol = $rol;
 		$this->descrip = $descrip;
 		$this->cumple = $cumple;
-		$this->fprincipal = $fprincipal;
     }
 
     public function id()
@@ -256,10 +251,6 @@ class Usuario
 	public function descrip(){
         return $this->descrip;
     }
-
-	public function fprincipal(){
-		return $this->fprincipal;
-	}
 
     public function compruebaPassword($password)
     {
