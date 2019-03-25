@@ -47,12 +47,11 @@
 				$erroresFormulario[] = "¡No seas tímido! Cuéntanos algo sobre ti.";
 			}
 			
-			$fprincipal = isset($datos['fprincipal']) ? $datos['fprincipal'] : null;
-			
 			if (count($erroresFormulario) === 0) {
 				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', 'noob', 'user', $descrip, $cumple);
 				if (! $usuario ) {
 					$erroresFormulario[] = "El usuario ya existe";
+					$erroresFormulario[] = $fprincipal;
 				} else {
 					$_SESSION['login'] = true;
 					$_SESSION['nombre'] = $nombreUsuario;
@@ -70,7 +69,6 @@
 			$rol = '';
 			$descr = '';
 			$cumple = '';
-			$fprincipal = null;
 			
 			/*
 			* En caso de que hubiera un error se mantienen 
@@ -85,7 +83,6 @@
 				$rol = 'user';
 				$descr = $datosIniciales['descrip'];
 				$cumple = $datosIniciales['cumple'];
-				$fprincipal = $datosIniciales['fprincipal'];
 			}
 			
 			$html = '';
@@ -111,13 +108,9 @@
 			$html .='		<label>Fecha de nacimiento:</label> <input class="control" type="date" name="cumple" value="'.$cumple.'" required />';
 			$html .='	</div>';
 			
-			$html .='	<form action="subeimagen.php" enctype="multipart/form-data" method="post">';
-			$html .='		<label for="imagen">Foto de perfil:</label> ';
-			$html .='		<input id="imagen" name="imagen" size="30" type="file" />';
-			//$html .='		<input type="submit" value="Cambiar datos" />';
-			$html .='	</form>';
+			
 			//$html .='	<div class="grupo-control">';
-			//$html .='		<label>Foto principal:</label> <input class="control" type="file" name="fprincipal" value="'.$fprincipal.'" required />';
+			//$html .='		<label>Foto principal:</label> <input class="control" type="file" name="fprincipal" required />';
 			//$html .='	</div>';
 
 			

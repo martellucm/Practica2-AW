@@ -37,8 +37,13 @@ require_once __DIR__.'/includes/Usuario.php';
 				echo '<div id="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
 				echo '<a href="editarUsuario.php?id='.$user->id().'"> Modificar </a>';
 				echo '</div>';
-			}
-		?>
+				
+				
+				echo '<form action="comotuquieras.php?id='.$id.'&where=users" method="POST" enctype="multipart/form-data">';
+				echo '<input type="file" name="file">';
+				echo '<button type="submit" name="submit"> Actualizar foto</button>';
+			} ?>
+
 	</div>
 </body>
 </html>
