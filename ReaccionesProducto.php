@@ -18,12 +18,13 @@
 		echo	'<p>Comentarios</p>';
 
 		if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
-            /* echo   '<form action = "ModificarProducto.php?id='.$_GET['id'].'"method="POST"> <input type="submit" value="Modificar">
-              </form>';*/
+           	echo '<div id = "admin">';
              echo '<a href="ModificarProducto.php?id='.$id.'"> Modificar </a>';
          	echo '<form action="comotuquieras.php?id='.$id.'&where=products" method="POST" enctype="multipart/form-data">';
 			echo '<input type="file" name="file">';
 			echo '<button type="submit" name="submit"> Actualizar foto</button>';
+			echo'</div>';
+			;
            }
            
 		echo' </div>';
