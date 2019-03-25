@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2019 a las 17:12:11
+-- Tiempo de generación: 25-03-2019 a las 20:08:52
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `mychustergames`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id` int(11) NOT NULL,
+  `idProd` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `texto_coment` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -62,8 +75,27 @@ CREATE TABLE `torneo` (
   `tipoTorneo` varchar(20) NOT NULL,
   `idJuego` int(11) NOT NULL,
   `Puntuacion` int(20) NOT NULL,
+  `dia_ganado` date NOT NULL,
   `esMensual` tinyint(1) NOT NULL DEFAULT '0',
   `esViernes` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `torneo_jugando`
+--
+
+CREATE TABLE `torneo_jugando` (
+  `id` int(11) NOT NULL,
+  `jugadores_total` int(20) NOT NULL,
+  `id_jugad_jugan` int(11) NOT NULL,
+  `idJuego` int(11) NOT NULL,
+  `esViernes` tinyint(1) NOT NULL DEFAULT '0',
+  `esMensual` tinyint(1) NOT NULL DEFAULT '0',
+  `dia_jugado` date NOT NULL,
+  `puntos` int(10) NOT NULL DEFAULT '0',
+  `ronda` varchar(40) NOT NULL DEFAULT 'clasificacion'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -92,11 +124,20 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombreUsuario`, `nombre`, `password`, `email`, `ptosForum`, `ptosProd`, `ptosTourn`, `avatar`, `rol`, `descrip`, `cumple`) VALUES
-(1, 'Chuster', 'Chuster Garcia', '$2y$10$.iJf.qUonY.Im9nM419W6eKWw0.q43ChW7maLJ3J/turPzzctyZ8O', 'chuster@gmail.com', 0, 0, 20, '', 'admin', 'Soy una persona meramente interesante', '1995-05-23');
+(1, 'Chuster', 'Chuster Garcia', '$2y$10$.iJf.qUonY.Im9nM419W6eKWw0.q43ChW7maLJ3J/turPzzctyZ8O', 'chuster@gmail.com', 0, 0, 20, '', 'admin', 'Soy una persona meramente interesante', '1995-05-23'),
+(2, 'Lolito', 'Lolito Lopez', '$2y$10$.iJf.qUonY.Im9nM419W6eKWw0.q43ChW7maLJ3J/turPzzctyZ8O', 'lolito@gmail.com', 0, 0, 21, '', 'user', 'asdkasjd lasjk lk jasdlkjas dlj dlkjasldjk aldkjas dlkasj dlkasj dlakjd laskjd lsakjdsalkdjsadjhfjkhas kljasd ', '2016-11-15');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `comentario_FK1` (`idProd`),
+  ADD KEY `comentario_FK2` (`idUsuario`);
 
 --
 -- Indices de la tabla `producto`
@@ -109,7 +150,17 @@ ALTER TABLE `producto`
 -- Indices de la tabla `torneo`
 --
 ALTER TABLE `torneo`
-  ADD PRIMARY KEY (`idTourn`);
+  ADD PRIMARY KEY (`idTourn`),
+  ADD KEY `torneo_ibfk_1` (`idJuego`),
+  ADD KEY `torneo_ibfk_2` (`idUsuario`);
+
+--
+-- Indices de la tabla `torneo_jugando`
+--
+ALTER TABLE `torneo_jugando`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `torneo_jugdFK1` (`idJuego`),
+  ADD KEY `torneo_jugdFK2` (`id_jugad_jugan`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -121,6 +172,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -135,20 +192,41 @@ ALTER TABLE `torneo`
   MODIFY `idTourn` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `torneo_jugando`
+--
+ALTER TABLE `torneo_jugando`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `comentario_FK1` FOREIGN KEY (`idProd`) REFERENCES `producto` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentario_FK2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `torneo`
 --
 ALTER TABLE `torneo`
-  ADD CONSTRAINT `torneo_ibfk_1` FOREIGN KEY (`idTourn`) REFERENCES `producto` (`id`);
+  ADD CONSTRAINT `torneo_ibfk_1` FOREIGN KEY (`idJuego`) REFERENCES `producto` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `torneo_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `torneo_jugando`
+--
+ALTER TABLE `torneo_jugando`
+  ADD CONSTRAINT `torneo_jugdFK1` FOREIGN KEY (`idJuego`) REFERENCES `producto` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `torneo_jugdFK2` FOREIGN KEY (`id_jugad_jugan`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
