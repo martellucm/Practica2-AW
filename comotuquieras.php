@@ -14,13 +14,15 @@
 		
 		$fileExt = explode('.', $_FILES['file']['name']);
 		$fileActualExt = strtolower(end($fileExt));
-		$allowed = 'jpg';
+		$allowed = array('jpg', 'png');
 		
-		if($fileActualExt = $allowed){
+		if(in_array($fileActualExt,$allowed)){
 			if($fileError === 0){
 				if($fileSize <= 500000){
+					unlink('img/' . $_GET['where'] . '/' . $_GET['id'] . '.png');
+					unlink('img/' . $_GET['where'] . '/' . $_GET['id'] . '.jpg');
 					$fileDestination = $dir_subida . $fileName. "." .$fileActualExt;
-					//$fileDestination = '/img/users/2.jpg';
+					//$fileDestination = 'img/users/2.jpg';
 					move_uploaded_file($fileTmpName, $fileDestination);
 					if ($_GET['where'] == "users"){
 						header("Location: miBoqueron.php?uploadsuccess");

@@ -16,10 +16,16 @@ require_once __DIR__.'/includes/Usuario.php';
 			$user = Usuario::buscaUsuario($_SESSION['nombre']);
 			$id = $user->id();
 			$directorio = "img/users/$id.jpg";
+			$directorioPNG = "img/users/$id.png";
 			if($user instanceof Usuario){
 				echo '<div id = "muestraUser">';
 				if(@file_get_contents($directorio) == null){
-					echo '<div id = "img_user"><img src="img/users/default_user.png"/></div> ';
+					if(@file_get_contents($directorioPNG) == null){
+						echo '<div id = "img_user"><img src="img/users/default_user.png"/></div> ';
+					}
+					else{
+						echo '<div id = "img_user"><img src='.$directorioPNG.'></div>';
+					}
 				}
 				else{
 					echo '<div id = "img_user"><img src='.$directorio.'></div>';
@@ -36,12 +42,11 @@ require_once __DIR__.'/includes/Usuario.php';
 				//echo '<div id="user_avat"><p>Avatar: '.$user->avatar().'</p></div>';
 				echo '<div id="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
 				echo '<a href="editarUsuario.php?id='.$user->id().'"> Modificar </a>';
-				echo '</div>';
-
 
 				echo '<form action="comotuquieras.php?id='.$id.'&where=users" method="POST" enctype="multipart/form-data">';
 				echo '<input type="file" name="file">';
 				echo '<button type="submit" name="submit"> Actualizar foto</button>';
+				echo '</div>';
 			} ?>
 
 	</div>
