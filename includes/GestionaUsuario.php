@@ -39,19 +39,19 @@
 		$directorioPNG = "img/users/$id.png";
 		$directorioJPEG = "img/users/$id.jpeg";
         if(@file_get_contents($directorio) == null){
-			if(@file_get_contents($directorioPNG) == null){
-				if(@file_get_contents($directorioJPEG) == null){
-					echo '<div class ="products"><div class="img_user"><img src="img/users/default_user.png"></div> ';
-				}else{
-					echo '<div class ="products"><div class="img_user"><img src='.$directorioJPEG.'></div>';
-				}
-			}
-			else{
-				echo '<div class ="products"><div class="img_user"><img src='.$directorioPNG.'></div>';
-			}
+            if(@file_get_contents($directorioPNG) == null){
+                if(@file_get_contents($directorioJPEG) == null){
+                    echo '<div class ="products"><div class="img_user"><img src="img/users/default_user.png"></div> ';
+                }else{
+                    echo '<div class ="products"><div class="img_user"><img src='.$directorioJPEG.'></div>';
+                }
+            }
+            else{
+                echo '<div class ="products"><div class="img_user"><img src='.$directorioPNG.'></div>';
+            }
         }
         else{
-			echo '<div class ="products"><div class="img_user"><div class="img_user"><img src='.$directorio.'></div>';
+            echo '<div class ="products"><div class="img_user"><img src='.$directorio.'></div>';
         }
         echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
         ?>
