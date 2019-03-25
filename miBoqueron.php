@@ -19,7 +19,6 @@ require_once __DIR__.'/includes/Usuario.php';
 			$directorioPNG = "img/users/$id.png";
 			$directorioJPEG = "img/users/$id.jpeg";
 			if($user instanceof Usuario){
-				echo '<div id = "muestraUser">';
 				if(@file_get_contents($directorio) == null){
 					if(@file_get_contents($directorioPNG) == null){
 						if(@file_get_contents($directorioJPEG) == null){
@@ -36,6 +35,7 @@ require_once __DIR__.'/includes/Usuario.php';
 				else{
 					echo '<div id = "img_user"><img src='.$directorio.'></div>';
 				}
+				echo '<div id = "muestraUser">';
 				echo '<div id="user_nick"><h1>Nickname: '.$user->nombreUsuario().'</h1></div>';
 				echo '<div id"user_name"><h2>Nombre completo: '.$user->nombre().'</h2></div>';
 				echo '<div id="user_rol"><h2>Rol: '.$user->rol().'</h2></div>';
@@ -47,6 +47,8 @@ require_once __DIR__.'/includes/Usuario.php';
 				echo '<div id="user_poin"><p>Puntos obtenidos en torneos: '.$user->ptosTourn().'</p></div>';
 				//echo '<div id="user_avat"><p>Avatar: '.$user->avatar().'</p></div>';
 				echo '<div id="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
+				echo '</div>';
+				echo '<div id = "admin">';
 				echo '<a href="editarUsuario.php?id='.$user->id().'"> Modificar </a>';
 
 				echo '<form action="comotuquieras.php?id='.$id.'&where=users" method="POST" enctype="multipart/form-data">';
