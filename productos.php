@@ -18,7 +18,7 @@ require_once __DIR__.'/includes/config.php';
 	    </div>
       <div id = "reacciones">
            <?php 
-           require_once __DIR__.'/ReaccionesProducto.php';
+           require_once __DIR__.'/includes/ReaccionesProducto.php';
            Valoracion::setPuntuacion($_GET['id']);
             ?>
       </div>
