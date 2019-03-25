@@ -34,8 +34,14 @@
       }
 
 	    public static function mostrarUsuarioCorto($row){
-         $img = $row->fprincipal();
-         echo '<div class ="products"><a href="usuarios.php?id='.$row->id().'"><div><img src="data:image/jpg; base64,'.base64_encode($img).'" ></div></a>';
+			$id = $row->id();
+            $directorio = "img/users/$id.jpg";
+            if(file_get_contents($directorio) == null){
+                    echo '<div class="products"><a href="usuarios.php?id='.$row->id().'"><div class="img_val"><img src="img/users/default_user.png"/></div> ';
+                }
+                else{
+                    echo '<div id = "img_user"><img src='.$directorio.'></div>';
+                }
          echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
          ?>
            <div class ="name_product">
