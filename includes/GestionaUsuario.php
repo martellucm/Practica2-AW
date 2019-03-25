@@ -34,27 +34,15 @@
       }
 
       public static function mostrarUsuarioCorto($row){
-		$id = $row->id();
-        $directorio = "img/users/$id.jpg";
-		$directorioPNG = "img/users/$id.png";
-		$directorioJPEG = "img/users/$id.jpeg";
-        if(@file_get_contents($directorio) == null){
-			if(@file_get_contents($directorioPNG) == null){
-				if(@file_get_contents($directorioJPEG) == null){
-					echo '<div id = "img_user"><img src="img/users/default_user.png"/></div> ';
-				}
-				else{
-					echo '<div id = "img_user"><img src='.$directorioJPEG.'></div>';
-				}
-			}
-			else{
-				echo '<div id = "img_user"><img src='.$directorioPNG.'></div>';
-			}
-		}
-		else{
-			echo '<div id = "img_user"><img src='.$directorio.'></div>';
-		}
-        echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
+      $id = $row->id();
+             $directorio = "img/users/$id.jpg";
+             if(@file_get_contents($directorio) == null){
+                     echo '<div class ="products"><div class="img_user"><img src="img/users/default_user.png"></div> ';
+                 }
+                 else{
+                     echo '<div class ="products"><div class="img_user"><img src='.$directorio.'></div>';
+                 }
+          echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
           ?>
             <div class ="p_product">
               <a href="">Modificar</a>
