@@ -57,7 +57,16 @@ class GestionProducto{
         } //Obtiene los productos de puntuacion >6
 
         public static function mostrarProductoCorto($row){
-         echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div><img src="productos/'.$row['id'].'.jpg"></a>';
+          $directorio = 'img/products/'.$row['id'].'.jpg';
+
+          if(@file_get_contents($directorio) == null){
+              echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div id = "img_total"><img src="img/products/default.jpg"/></a>';
+          }
+          else{
+              echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div id = "img_total"><img src='.$directorio.'></a>';
+          }    
+
+         
          echo '<div class ="name_product"> <p>'.$row['nombre'].'</p></div>';
          echo '<div class ="p_product"> <p> Puntuación:'.$row['puntos'].'</p> </div>';
          ?>
