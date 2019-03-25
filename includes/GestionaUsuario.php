@@ -51,14 +51,16 @@
            <?php
 
        }//Muestra la forma corta de un producto
-        public static function listadoUsuario(){
-          $user = GestionUsuario::getUsers();
-            if(is_array($user)){
-              foreach ($user as &$row) {
-               GestionUsuario::mostrarUsuarioCorto($row);
-            }
-          }
-        }//Sirve para la parte de producto y muestra todos los productos
+       public static function listadoUsuario(){
+         $user = GestionUsuario::getUsers();
+           if(is_array($user)){
+             foreach ($user as &$row) {
+         if($row->rol() != 'admin'){
+         GestionUsuario::mostrarUsuarioCorto($row);
+         }
+           }
+         }
+       }//Sirve para la parte de producto y muestra todos los productos
 
 
 		public static function getUsers(){
