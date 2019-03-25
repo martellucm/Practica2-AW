@@ -66,7 +66,7 @@ class Usuario
     public static function getWW(){
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM `usuarios` HAVING MAX(ptosTourn)");
+        $query = sprintf("SELECT * FROM `usuarios`ORDER BY ptosTourn DESC");
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
@@ -137,15 +137,15 @@ class Usuario
         return $usuario;
     }
 
-    public static function actualiza($usuario)
+    private static function actualiza($usuario)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE usuarios U SET nombreUsuario = '%s', nombre='%s', email='%s', ptosForum='%s',
-						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', fprincipal='%s', WHERE U.id='%i'"
+        $query=sprintf("UPDATE usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s',
+						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', fprincipal='%s', WHERE U.id=%i"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
-            //, $conn->real_escape_string($usuario->password)
+            , $conn->real_escape_string($usuario->password)
             , $conn->real_escape_string($usuario->email)
             , $conn->real_escape_string($usuario->ptosForum)
             , $conn->real_escape_string($usuario->ptosProd)
