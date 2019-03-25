@@ -7,7 +7,7 @@ class ModifUsuario extends Form{
 	
 	
 	protected function procesaFormulario($datos){
-			//$id3 = $datos['id'];
+			$id3 = $datos['id'];
 			if (! isset($_POST['modificarusuario']) ) {
 				header('Location: miBoqueron.php');
 				exit();
@@ -26,14 +26,6 @@ class ModifUsuario extends Form{
 				$erroresFormulario[] = "El nombre tiene que tener una longitud de al menos 5 caracteres.";
 			}
 
-			$password = isset($datos['password']) ? $datos['password'] : null;
-			if ( empty($password) || mb_strlen($password) < 5 ) {
-				$erroresFormulario[] = "El password tiene que tener una longitud de al menos 5 caracteres.";
-			}
-			$password2 = isset($datos['password2']) ? $datos['password2'] : null;
-			if ( empty($password2) || strcmp($password, $password2) !== 0 ) {
-				$erroresFormulario[] = "Los passwords deben coincidir";
-			}
 			
 			$email = isset($datos['email']) ? $datos['email'] : null;
 			if ( empty($email)) {
@@ -61,25 +53,28 @@ class ModifUsuario extends Form{
 		}
 
 	protected function generaCamposFormulario($datosIniciales){
+		if(! isset($_POST['modificarusuario']) ){
 		 	$id = $_GET['id'];
 			echo $id;
+			var_dump($id);
      		$usuario = Usuario::buscaUsuarioID($id);
-
+		}
+		else{
+				$id = $datosIniciales['id'];
+			$usuario = Usuario::buscaUsuarioID($id);
+		}
 			/*
 			* En caso de que hubiera un error se mantienen
 			* los datos para que puedas modificarlos
 			*/
 
-				
+				$datosIniciales['id'] = $usuario->id();
 				$datosIniciales['nombreUsuario'] = $usuario->nombreUsuario();
 				$datosIniciales['nombre'] = $usuario->nombre();
 				$datosIniciales['email'] = $usuario->email();
-				$datosIniciales['password'] = '';
-				$datosIniciales['password'] = '';
 				$datosIniciales['descrip'] = $usuario->descrip();
 				$datosIniciales['cumple']= $usuario->cumple();
 				$datosIniciales['fprincipal'] = $usuario->fprincipal();
-			
 
 			$html = '';
 			$html .='	<fieldset>';
