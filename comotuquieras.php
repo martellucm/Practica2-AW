@@ -40,7 +40,7 @@
 			}
 		}
 		else{
-			echo 'Sube un fichero con extensión .jpg';
+			echo 'Sube un fichero con extensión .jpg, .png ó .jpeg';
 		}
 	}
 
