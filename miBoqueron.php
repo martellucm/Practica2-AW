@@ -17,11 +17,17 @@ require_once __DIR__.'/includes/Usuario.php';
 			$id = $user->id();
 			$directorio = "img/users/$id.jpg";
 			$directorioPNG = "img/users/$id.png";
+			$directorioJPEG = "img/users/$id.jpeg";
 			if($user instanceof Usuario){
 				echo '<div id = "muestraUser">';
 				if(@file_get_contents($directorio) == null){
 					if(@file_get_contents($directorioPNG) == null){
-						echo '<div id = "img_user"><img src="img/users/default_user.png"/></div> ';
+						if(@file_get_contents($directorioJPEG) == null){
+							echo '<div id = "img_user"><img src="img/users/default_user.png"/></div> ';
+						}
+						else{
+							echo '<div id = "img_user"><img src='.$directorioJPEG.'></div>';
+						}
 					}
 					else{
 						echo '<div id = "img_user"><img src='.$directorioPNG.'></div>';

@@ -14,13 +14,14 @@
 		
 		$fileExt = explode('.', $_FILES['file']['name']);
 		$fileActualExt = strtolower(end($fileExt));
-		$allowed = array('jpg', 'png');
+		$allowed = array('jpg', 'png', 'jpeg');
 		
 		if(in_array($fileActualExt,$allowed)){
 			if($fileError === 0){
 				if($fileSize <= 500000){
 					unlink('img/' . $_GET['where'] . '/' . $_GET['id'] . '.png');
 					unlink('img/' . $_GET['where'] . '/' . $_GET['id'] . '.jpg');
+					unlink('img/' . $_GET['where'] . '/' . $_GET['id'] . '.jpeg');
 					$fileDestination = $dir_subida . $fileName. "." .$fileActualExt;
 					//$fileDestination = 'img/users/2.jpg';
 					move_uploaded_file($fileTmpName, $fileDestination);
