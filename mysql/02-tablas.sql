@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2019 a las 12:57:47
+-- Tiempo de generación: 25-03-2019 a las 17:12:11
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -50,6 +50,50 @@ INSERT INTO `producto` (`id`, `nombreProd`, `puntos`, `descript`, `edad`, `jugad
 (2, 'root', 0, 'La infame Marquesa de Gato se ha apoderado del gran bosque, con la intención de cosechar sus riquezas. Bajo su gobierno, las muchas criaturas del bosque se han unido. Esta Alianza buscará fortalecer sus recursos y subvertir la regla de los Gatos. En este esfuerzo, la Alianza puede contar con la ayuda de los vagabundos errantes que pueden moverse a través de los caminos más peligrosos del bosque.', 5, 6, 'https://www.amazon.com/', 'Amazon SA', 0),
 (3, 'lolita lola', 6, 'loaskjdlsajdls slkasjdlaskdjlask', 3, 5, 'https://www.a.com', 'MyChuster SA', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `torneo`
+--
+
+CREATE TABLE `torneo` (
+  `idTourn` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `tipoTorneo` varchar(20) NOT NULL,
+  `idJuego` int(11) NOT NULL,
+  `Puntuacion` int(20) NOT NULL,
+  `esMensual` tinyint(1) NOT NULL DEFAULT '0',
+  `esViernes` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombreUsuario` varchar(15) NOT NULL,
+  `nombre` varchar(40) NOT NULL,
+  `password` varchar(80) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `ptosForum` int(10) DEFAULT '0',
+  `ptosProd` int(10) DEFAULT '0',
+  `ptosTourn` int(10) DEFAULT '0',
+  `avatar` varchar(20) NOT NULL,
+  `rol` varchar(10) NOT NULL DEFAULT 'user',
+  `descrip` text,
+  `cumple` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombreUsuario`, `nombre`, `password`, `email`, `ptosForum`, `ptosProd`, `ptosTourn`, `avatar`, `rol`, `descrip`, `cumple`) VALUES
+(1, 'Chuster', 'Chuster Garcia', '$2y$10$.iJf.qUonY.Im9nM419W6eKWw0.q43ChW7maLJ3J/turPzzctyZ8O', 'chuster@gmail.com', 0, 0, 20, '', 'admin', 'Soy una persona meramente interesante', '1995-05-23');
+
 --
 -- Índices para tablas volcadas
 --
@@ -62,6 +106,19 @@ ALTER TABLE `producto`
   ADD UNIQUE KEY `id` (`nombreProd`);
 
 --
+-- Indices de la tabla `torneo`
+--
+ALTER TABLE `torneo`
+  ADD PRIMARY KEY (`idTourn`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nombreUsuario` (`nombreUsuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -70,6 +127,28 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `producto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `torneo`
+--
+ALTER TABLE `torneo`
+  MODIFY `idTourn` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `torneo`
+--
+ALTER TABLE `torneo`
+  ADD CONSTRAINT `torneo_ibfk_1` FOREIGN KEY (`idTourn`) REFERENCES `producto` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
