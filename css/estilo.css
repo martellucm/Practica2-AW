@@ -168,7 +168,7 @@
 		float: center;
 	}
 	.products{
-		background-color: #A569BD;
+		background-color:#A569BD;
 		display: inline-grid;
 		margin-top: 5%;
 		margin-left: 10%;
@@ -181,7 +181,6 @@
 		background-color: #58A8CB;
 		display: grid;
 		bottom: 0;
-		
 	}
 
 	.name_product p{
@@ -190,6 +189,20 @@
 		 font-size: 120%;
 		 font-style: italic;
 
+	}
+	.products img{
+		background-color:#EEE8AA;
+	}
+
+	.p_product a{
+		color: black;
+		font-weight: bold;
+		text-decoration: none;
+		display: inline-grid;
+	}
+	.p_product a:hover {
+		color:  grey;
+		font-weight: bold;
 	}
 
 	.p_product p{
@@ -389,6 +402,7 @@
 		font-weight: bold;
 	}
 	
+
 	
 
 
