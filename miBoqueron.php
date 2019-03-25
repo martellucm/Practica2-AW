@@ -49,7 +49,7 @@ require_once __DIR__.'/includes/Usuario.php';
 				echo '<div id="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
 				echo '</div>';
 				echo '<div id = "admin">';
-				echo '<a href="editarUsuario.php?id='.$user->id().'"> Modificar </a>';
+				echo '<a href="ModUsuario.php?id='.$id.'"> Modificar </a>';
 
 				echo '<form action="comotuquieras.php?id='.$id.'&where=users" method="POST" enctype="multipart/form-data">';
 				echo '<input type="file" name="file">';
