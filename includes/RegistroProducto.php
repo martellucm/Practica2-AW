@@ -44,7 +44,7 @@ class RegistroProducto extends Form {
 				$erroresFormulario[] = "Imtroduce el nombre de la empresa propietaria.";
 			}
 
-			$img = isset($datos['_image']) ? $datos['_image'] : null;
+			//$img = isset($datos['_image']) ? $datos['_image'] : null;
 
 			if (count($erroresFormulario) === 0) {
 				$producto = Product::crea($nombreProducto, 0, $descrip, $edad, $jugadores,$link,$empresa, '0',$img);
@@ -65,7 +65,7 @@ class RegistroProducto extends Form {
 			$jugadores = 0;
 			$link = '';
 			$empresa = '';
-			$img = null;
+			//$img = null;
 
 			/*
 			* En caso de que hubiera un error se mantienen
@@ -79,7 +79,7 @@ class RegistroProducto extends Form {
 				$jugadores = $datosIniciales['_jugadores'];
 				$link = $datosIniciales['_link'];
 				$empresa = $datosIniciales['_empresa'];
-				$img = $datosIniciales['_image'];
+				//$img = $datosIniciales['_image'];
 			}
 
 			$html = '';
@@ -103,9 +103,9 @@ class RegistroProducto extends Form {
 			$html .='		<label>Empresa:</label> <input class="control" type="text" name="_empresa" value="'.$empresa.'" required />';
 			$html .='	</div>';
 
-			$html .='	<div class="grupo-control">';
-			$html .='		<label>Foto principal:</label> <input class="control" type="file" name="_image" value="'.$img.'" required />';
-			$html .='	</div>';
+			//$html .='	<div class="grupo-control">';
+			//$html .='		<label>Foto principal:</label> <input class="control" type="file" name="_image" value="'.$img.'" required />';
+			//$html .='	</div>';
 
 
 

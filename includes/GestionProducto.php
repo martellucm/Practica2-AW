@@ -9,7 +9,6 @@ class GestionProducto{
                 $arr = "Este producto no existe";
             }
              else{
-              $img = $producto->fprincipal();
               $nombre = $producto->nombreProd();
               $puntos = $producto->puntos();
               $descript = $producto->descript();
@@ -30,8 +29,6 @@ class GestionProducto{
                 "link" => $link,
                 "empresa" => $empresa,
                 "num_votaciones" => $num_votaciones,
-                "img" => $img,
-
               );
             }
 
@@ -60,7 +57,6 @@ class GestionProducto{
         } //Obtiene los productos de puntuacion >6
 
         public static function mostrarProductoCorto($row){
-         $img = $row['img'];
          echo '<div class ="products"><a href="productos.php?id='.$row['id'].'"<div><img class="foto_publi" src="productos/'.$row['id'].'.jpg"></a>';
          echo '<div class ="name_product"> <p>'.$row['nombre'].'</p></div>';
          echo '<div class ="p_product"> <p> Puntuación:'.$row['puntos'].'</p> </div>';
