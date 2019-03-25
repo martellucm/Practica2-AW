@@ -82,13 +82,13 @@ class Product {
         }
         return self::inserta($producto);
     }
-	public static function crea($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $num_votaciones, $fprincipal)
+	public static function crea($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $num_votaciones)
     {
         $product = self::buscaProducoNom($nombreProd);
         if ($product instanceof Product) {
             return false;
         }
-        $product = new Product($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $num_votaciones, $fprincipal);
+        $product = new Product($nombreProd,$puntos, $descript, $edad, $jugadores, $link, $empresa, $num_votaciones);
         return self::guarda($product);
     }
 
@@ -96,7 +96,7 @@ class Product {
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa, num_votaciones ,fprincipal) VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        $query=sprintf("INSERT INTO producto(nombreProd, puntos, descript, edad, jugadores, link, empresa, num_votaciones) VALUES('%s','%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($producto->nombreProd)
             , $conn->real_escape_string($producto->puntos)
             , $conn->real_escape_string($producto->descript)
