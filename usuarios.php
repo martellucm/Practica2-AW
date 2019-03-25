@@ -18,7 +18,7 @@ require_once __DIR__.'/includes/Usuario.php';
 				echo '<div>';
         $id = $user->id();
           $directorio = "img/users/$id.jpg";
-          if(file_get_contents($directorio) == null){
+          if(@file_get_contents($directorio) == null){
                   echo '<div><img src="img/users/default_user.png"/></div> ';
               }
               else{

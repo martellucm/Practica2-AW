@@ -36,7 +36,7 @@
 	    public static function mostrarUsuarioCorto($row){
 			$id = $row->id();
             $directorio = "img/users/$id.jpg";
-            if(file_get_contents($directorio) == null){
+            if(@file_get_contents($directorio) == null){
                     echo '<div class="products"><a href="usuarios.php?id='.$row->id().'"><div class="img_val"><img src="img/users/default_user.png"/></div> ';
                 }
                 else{
