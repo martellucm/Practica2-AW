@@ -1,40 +1,126 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once __DIR__.'/includes/Usuario.php';
-?>
-<!DOCTYPE HTML>
-<html lang="es">
-  <head>
-    <title>Mi boquerón - My Chuster Games</title>
-    <link rel="stylesheet" type="text/css" href="css/estilo.css" />
-    <meta charset="utf-8">
-  </head>
-<body>
-	<?php require'includes/comun/cabecera.php'?>
-	<div id ="contenedor">
-		<?php
-			$user = Usuario::buscaUsuario($_SESSION['nombre']);
-			if($user instanceof Usuario){
-				echo '<div>';
-				echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" /></div>';
-				
-				echo '<div class="user_nick"><h1>Nickname: '.$user->nombreUsuario().'</h1></div>';
-				echo '<div class="user_name"><h2>Nombre completo: '.$user->nombre().'</h2></div>';
-				echo '<div class="user_rol"><h2>Rol: '.$user->rol().'</h2></div>';
-				echo '<div class="user_emai"><h3>Email: '.$user->email().'</h3></div>';
-				echo '<div class="user_birt"><h3>Fecha de nacimiento: '.$user->cumple().'</h3></div>';
-			  
-				echo '<div class="user_poin"><p>Puntos obtenidos en el foro:'.$user->ptosForum().'</p></div>';
-				echo '<div class="user_poin"><p>Puntos obtenidos valorando productos:'.$user->ptosProd().'</p></div>';
-				echo '<div class="user_poin"><p>Puntos obtenidos en torneos: '.$user->ptosTourn().'</p></div>';
-				//echo '<div class="user_avat"><p>Avatar: '.$user->avatar().'</p></div>';
-				echo '<div class="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
-				echo '</div>';
+	require_once __DIR__.'/includes/config.php';
+	require_once __DIR__.'/includes/Form.php';
+	require_once __DIR__.'/includes/Usuario.php';
+	
+class ModifUsuario extends Form{
+	
+	
+	protected function procesaFormulario($datos){
+			//$id3 = $datos['id'];
+			if (! isset($_POST['modificarusuario']) ) {
+				header('Location: miBoqueron.php');
+				exit();
 			}
-		?>
-	</div>
-	
-	
-	
-</body>
-</html>
+
+			$erroresFormulario = array();
+
+			$nombreUsuario = isset($datos['nombreUsuario']) ? $datos['nombreUsuario'] : null;
+
+			if ( empty($nombreUsuario) || mb_strlen($nombreUsuario) < 5 ) {
+				$erroresFormulario[] = "El nombre de usuario tiene que tener una longitud de al menos 5 caracteres.";
+			}
+
+			$nombre = isset($datos['nombre']) ? $datos['nombre'] : null;
+			if ( empty($nombre) || mb_strlen($nombre) < 5 ) {
+				$erroresFormulario[] = "El nombre tiene que tener una longitud de al menos 5 caracteres.";
+			}
+
+			$password = isset($datos['password']) ? $datos['password'] : null;
+			if ( empty($password) || mb_strlen($password) < 5 ) {
+				$erroresFormulario[] = "El password tiene que tener una longitud de al menos 5 caracteres.";
+			}
+			$password2 = isset($datos['password2']) ? $datos['password2'] : null;
+			if ( empty($password2) || strcmp($password, $password2) !== 0 ) {
+				$erroresFormulario[] = "Los passwords deben coincidir";
+			}
+			
+			$email = isset($datos['email']) ? $datos['email'] : null;
+			if ( empty($email)) {
+				$erroresFormulario[] = "Debe introducir un correo electrónico.";
+			}
+			
+			$cumple = isset($datos['cumple']) ? $datos['cumple'] : null;
+			if ( empty($cumple)) {
+				$erroresFormulario[] = "Debe introducir su fecha de nacimiento.";
+			}
+			
+			$descrip = isset($datos['descrip']) ? $datos['descrip'] : null;
+			if ( empty($descrip) || mb_strlen($descrip) < 5 ) {
+				$erroresFormulario[] = "¡No seas tímido! Cuéntanos algo sobre ti.";
+			}
+			
+			$fprincipal = isset($datos['fprincipal']) ? $datos['fprincipal'] : null;
+			
+			if (count($erroresFormulario) === 0) {
+				Usuario::actualiza($usuario);
+				return 'miBoqueron.php';	
+			}
+			
+			return $erroresFormulario;	
+		}
+
+	protected function generaCamposFormulario($datosIniciales){
+		 	$id = $_GET['id'];
+			echo $id;
+     		$usuario = Usuario::buscaUsuarioID($id);
+
+			/*
+			* En caso de que hubiera un error se mantienen
+			* los datos para que puedas modificarlos
+			*/
+
+				
+				$datosIniciales['nombreUsuario'] = $usuario->nombreUsuario();
+				$datosIniciales['nombre'] = $usuario->nombre();
+				$datosIniciales['email'] = $usuario->email();
+				$datosIniciales['password'] = '';
+				$datosIniciales['password'] = '';
+				$datosIniciales['descrip'] = $usuario->descrip();
+				$datosIniciales['cumple']= $usuario->cumple();
+				$datosIniciales['fprincipal'] = $usuario->fprincipal();
+			
+
+			$html = '';
+			$html .='	<fieldset>';
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Nombre de usuario:</label> <input class="control" type="text" name="nombreUsuario" value="'.$usuario->nombreUsuario().'" required />';
+			$html .='	</div>';
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Nombre completo:</label> <input class="control" type="text" name="nombre" value="'.$usuario->nombre().'" required />';
+			$html .='	</div>';
+			//$html .='	<div class="grupo-control">';
+			//$html .='		<label>Password:</label> <input class="control" type="password" name="password" required />';
+			//$html .='	</div>';
+			//$html .='	<div class="grupo-control"><label>Vuelve a introducir el Password:</label> <input class="control" type="password" name="password2"/><br /></div>';
+			
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Correo electrónico:</label> <input class="control" type="text" name="email" value="'.$usuario->email().'" required />';
+			$html .='	</div>';
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Háblanos sobre ti:</label> <input class="control" type="text" name="descrip" value="'.$usuario->descrip().'" required />';
+			$html .='	</div>';
+			$html .='	<div class="grupo-control">';
+			$html .='		<label>Fecha de nacimiento:</label> <input class="control" type="date" name="cumple" value="'.$usuario->cumple().'" required />';
+			$html .='	</div>';
+			
+			//$html .='	<div class="grupo-control">';
+			//$html .='		<label>Foto principal:</label> <input class="control" type="file" name="fprincipal" value="'.$usuario->fprincipal().'" required />';
+			//$html .='	</div>';
+			
+			$html .='<input class="grupo-control" type="hidden" name="id" value="'.$usuario->id().'"/>';
+			$html .='	<div class="grupo-control"><button type="submit"  name="modificarusuario">Modificar</button></div>';
+			$html .='</fieldset>';
+			return $html;
+	}
+}
+
+?>
+
+<div id="contenido">
+	<h1>Modificar usuario</h1>
+<?php
+		$formu = new ModifUsuario('modificarusuario', array('action' => NULL));
+		$formu->gestiona();
+?>
+</div>

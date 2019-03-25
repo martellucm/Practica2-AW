@@ -142,7 +142,7 @@ class Usuario
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("UPDATE usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', email='%s', ptosForum='%s',
-						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', fprincipal='%s', WHERE U.id=%i"
+						ptosProd='%s', ptosTourn='%s', avatar='%s', rol='%s', descrip='%s', cumple='%s', fprincipal='%s', WHERE U.id='%i'"
             , $conn->real_escape_string($usuario->nombreUsuario)
             , $conn->real_escape_string($usuario->nombre)
             , $conn->real_escape_string($usuario->password)
