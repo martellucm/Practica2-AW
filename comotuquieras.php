@@ -19,7 +19,7 @@
 		if($fileActualExt = $allowed){
 			if($fileError === 0){
 				if($fileSize <= 500000){
-					$fileDestination = $dir_subida . $fileName "." .$fileActualExt;
+					$fileDestination = $dir_subida . $fileName. "." .$fileActualExt;
 					//$fileDestination = '/img/users/2.jpg';
 					move_uploaded_file($fileTmpName, $fileDestination);
 					header("Location: miBoqueron.php?uploadsuccess");
