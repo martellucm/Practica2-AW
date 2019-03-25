@@ -49,8 +49,7 @@ class ModifProducto extends Form {
 			if (count($erroresFormulario) === 0) {
 				
 				Product::actualizaProduct($id3, $nombreProducto, $descrip, $edad, $jugadores, $link, $empresa);
-				return 'prodtabla.php';
-			}
+				return 'productos.php?id='.$id3.'';			}
 
 			return $erroresFormulario;
 		}
