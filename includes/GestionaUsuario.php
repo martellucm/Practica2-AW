@@ -10,7 +10,7 @@
                     echo '<div><img src="img/users/default_user.png"/></div> ';
                 }
                 else{
-                    echo '<div id = "img_user"><img src='.$directorio.'>';
+                    echo '<div id = "img_user"><img src='.$directorio.'></div>';
                 }
           echo "<div><p>".$user->nombreUsuario()."</p>";
           echo "<p>".$user->ptosTourn()."</p> </div>";
