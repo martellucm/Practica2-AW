@@ -22,7 +22,11 @@
 					$fileDestination = $dir_subida . $fileName. "." .$fileActualExt;
 					//$fileDestination = '/img/users/2.jpg';
 					move_uploaded_file($fileTmpName, $fileDestination);
-					header("Location: miBoqueron.php?uploadsuccess");
+					if ($_GET['where'] == "users"){
+						header("Location: miBoqueron.php?uploadsuccess");
+					}else{
+						header("Location: productos.php?id=".$new_name);
+					}
 				}
 				else{
 					echo 'La foto es demasiado grande.';
