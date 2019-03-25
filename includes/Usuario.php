@@ -66,7 +66,7 @@ class Usuario
     public static function getWW(){
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM `usuarios`ORDER BY ptosTourn DESC");
+        $query = sprintf("SELECT * FROM `usuarios`HAVING MAX(ptosTourn)");
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {

@@ -4,7 +4,14 @@
       public static function mostrarWW(){
         $user = Usuario::getWW();
         if($user instanceof Usuario){
-          echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" /></div>';
+          $id = $user->id();
+            $directorio = "img/users/$id.jpg";
+            if(file_get_contents($directorio) == null){
+                    echo '<div><img src="img/users/default_user.png"/></div> ';
+                }
+                else{
+                    echo '<div id = "img_user"><img src='.$directorio.'>';
+                }
           echo "<div><p>".$user->nombreUsuario()."</p>";
           echo "<p>".$user->ptosTourn()."</p> </div>";
         }
