@@ -3,12 +3,21 @@
 	<div class="saludo">
 		<?php
 		if (isset($_SESSION["login"]) && ($_SESSION["login"]===true)) {
-			echo "Bienvenido, " . $_SESSION['nombre'] . ".<a href='miBoqueron.php'>Mi boquerón</a><a href='logout.php'>(salir)</a>";
+			?>
+			<p>
+			<?php
+			echo "Bienvenido, " . $_SESSION['nombre'] . "";
+			?>
+			</p>
+			<a href='miBoqueron.php'>Mi boquerón</a>
+			<a href='logout.php'>(salir)</a>
+			
+		
+		<?php
 
 		} else {
 			echo "<a href='registro.php'>Registro</a>";
 			echo "<a href='login.php'>Login</a>";
-
 		}
 		?>
 	</div>

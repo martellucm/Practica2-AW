@@ -30,10 +30,12 @@
 		float: top;
 	}
 
+	.saludo {
+		float: right;
+	}
 	.saludo a{
 		display: inline-block;
-		float: right;
-		width: 150px;
+		width: 100px;
 		height: 40px;
 		background-color: #8FBC8F;
 		opacity: .8;
@@ -42,20 +44,24 @@
 		font-size: 17px;
 		border: 1px white outset;
 	}
+	.saludo p{
+		font-size: 12px;
+		
+	}
 /*Zona de estilo en el menuBar------------------------*/
 
 	.navMenu ul{
 		list-style: none;
 		margin: 0px;
-		padding-top: auto;
+		padding-top: 36px;
 		padding-left: auto;
 		text-transform: uppercase;
 	}
 
 	.navMenu ul li{
 		float:left;
-		width: 150px;
-		height: 40px;
+		width: 120px;
+		height: auto;
 		background-color: #8FBC8F;
 		opacity: .8;
 		line-height: 40px;
