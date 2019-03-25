@@ -175,11 +175,13 @@
 		position: bottom;
 		text-align: center;
 		border: 2px grey outset;
+		width: 204px;
 	}
 	.name_product {
 		background-color: #58A8CB;
 		display: grid;
 		bottom: 0;
+		
 	}
 
 	.name_product p{
