@@ -33,24 +33,24 @@
         }
       }
 
-	    public static function mostrarUsuarioCorto($row){
-			$id = $row->id();
-            $directorio = "img/users/$id.jpg";
-            if(@file_get_contents($directorio) == null){
-                    echo '<div class="products"><a href="usuarios.php?id='.$row->id().'"><div class="img_val"><img src="img/users/default_user.png"/></div> ';
-                }
-                else{
-                    echo '<div id = "img_user"><img src='.$directorio.'></div>';
-                }
-         echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
-         ?>
-           <div class ="name_product">
-             <a href="">Modificar</a>
-             <a href="">Eliminar</a>
-           </div></div>
-           <?php
+      public static function mostrarUsuarioCorto($row){
+ 			$id = $row->id();
+             $directorio = "img/users/$id.jpg";
+             if(@file_get_contents($directorio) == null){
+                     echo '<div class="products"><a href="usuarios.php?id='.$row->id().'"><div class="img_val"><img src="img/users/default_user.png"/></div> ';
+                 }
+                 else{
+                     echo '<div id = "img_user"><img src='.$directorio.'></div>';
+                 }
+          echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
+          ?>
+            <div class ="p_product">
+              <a href="">Modificar</a>
+              <a href="">Eliminar</a>
+            </div></div>
+            <?php
 
-       }//Muestra la forma corta de un producto
+        }//Muestra la forma corta de un producto
        public static function listadoUsuario(){
         $user = GestionUsuario::getUsers();
           if(is_array($user)){
