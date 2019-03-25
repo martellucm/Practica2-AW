@@ -37,10 +37,10 @@
       $id = $row->id();
              $directorio = "img/users/$id.jpg";
              if(@file_get_contents($directorio) == null){
-                     echo '<div class="img_user"><img src="img/users/default_user.png"></div> ';
+                     echo '<div class ="products"><div class="img_user"><img src="img/users/default_user.png"></div> ';
                  }
                  else{
-                     echo '<div class="img_user"><img src='.$directorio.'></div>';
+                     echo '<div class ="products"><div class="img_user"><img src='.$directorio.'></div>';
                  }
           echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
           ?>

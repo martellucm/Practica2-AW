@@ -13,11 +13,10 @@ require_once __DIR__.'/includes/config.php';
   	<div id = "contenido">
 	    <?php require'includes/comun/cabecera.php'?>
       <div class="productos">
-        <div class = "products">
           <?php
             require_once __DIR__.'/includes/GestionaUsuario.php';
              GestionUsuario::listadoUsuario();
-          ?> </div>
+          ?>
       </div>
 	 </div>
 	</div>
