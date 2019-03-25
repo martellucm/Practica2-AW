@@ -47,6 +47,8 @@
 				$erroresFormulario[] = "¡No seas tímido! Cuéntanos algo sobre ti.";
 			}
 			
+			$fprincipal = isset($datos['fprincipal']) ? $datos['fprincipal'] : null;
+			
 			if (count($erroresFormulario) === 0) {
 				$usuario = Usuario::crea($nombreUsuario, $nombre, $password, $email, '0', '0', '0', 'noob', 'user', $descrip, $cumple, $fprincipal);
 				if (! $usuario ) {
@@ -57,8 +59,6 @@
 					return 'index.php';
 				}
 			}
-			
-			$fprincipal = isset($datos['fprincipal']) ? $datos['fprincipal'] : null;
 			
 			return $erroresFormulario;	
 		}
@@ -111,9 +111,9 @@
 			$html .='		<label>Fecha de nacimiento:</label> <input class="control" type="date" name="cumple" value="'.$cumple.'" required />';
 			$html .='	</div>';
 			
-			$html .='	<div class="grupo-control">';
-			$html .='		<label>Foto principal:</label> <input class="control" type="file" name="fprincipal" value="'.$fprincipal.'" required />';
-			$html .='	</div>';
+			//$html .='	<div class="grupo-control">';
+			//$html .='		<label>Foto principal:</label> <input class="control" type="file" name="fprincipal" value="'.$fprincipal.'" required />';
+			//$html .='	</div>';
 
 			
 			$html .='	<div class="grupo-control"><button type="submit" name="registro">Registrar</button></div>';

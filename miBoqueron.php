@@ -17,7 +17,7 @@ require_once __DIR__.'/includes/Usuario.php';
 			if($user instanceof Usuario){
 				echo '<div>';
 				if(empty($user->fprincipal())){
-					echo '<div><img src="img/ducks.jpg"/></div> ';
+					echo '<div><img src="img/default_user.png"/></div> ';
 				}
 				else{
 					echo '<div><img src="data:image/jpg; base64,'.base64_encode($user->fprincipal()).'" /></div>';
