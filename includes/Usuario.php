@@ -66,11 +66,11 @@ class Usuario
     public static function getWW(){
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query = sprintf("SELECT * FROM `usuarios`HAVING MAX(ptosTourn)");
+        $query = sprintf("SELECT * FROM usuarios ORDER BY ptosTourn DESC");
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
-            if ( $rs->num_rows == 1) {
+            if ( $rs->num_rows > 0) {
                 $fila = $rs->fetch_assoc();
                 $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['email'],
               $fila['ptosForum'], $fila['ptosProd'], $fila['ptosTourn'],
@@ -199,7 +199,7 @@ class Usuario
                 , $conn->real_escape_string($email)
                 , $conn->real_escape_string($descrip)
                 , $conn->real_escape_string($cumple));
-             $conn->query($query);    
+             $conn->query($query);
         }
 
     private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
