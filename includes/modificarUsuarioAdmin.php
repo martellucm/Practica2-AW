@@ -9,7 +9,7 @@ class ModifUsu extends Form {
 	protected function procesaFormulario($datos){
 			$id3 = $datos['_id'];
 			if (! isset($_POST['modificarusu']) ) {
-				header('Location: miBoqueron.php');
+				header('Location: userTabla.php.php');
 				exit();
 			}
 
@@ -40,7 +40,7 @@ class ModifUsu extends Form {
 			if (count($erroresFormulario) === 0) {
 				
 				Usuario::actualizaUsu($id3, $nombre, $email, $descrip, $cumple);
-				return 'miBoqueron.php';			}
+				return 'userTabla.php';			}
 
 			return $erroresFormulario;
 		}

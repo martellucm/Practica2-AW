@@ -202,6 +202,14 @@ class Usuario
              $conn->query($query);
         }
 
+    public static function eliminarUsuario($id)
+    {
+         $app = Aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query = sprintf("DELETE FROM usuarios WHERE id = '%s'", $conn->real_escape_string($id));
+        $rs = $conn->query($query);
+    }
+
     private function __construct($nombreUsuario, $nombre, $password, $email, $ptosForum, $ptosProd, $ptosTourn, $avatar, $rol, $descrip, $cumple)
     {
         $this->nombreUsuario= $nombreUsuario;

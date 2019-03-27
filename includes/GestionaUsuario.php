@@ -54,12 +54,14 @@
             echo '<div class ="products"><div class="img_user"><img src='.$directorio.'></div>';
         }
         echo '<div class ="name_product"> <p>'.$row->nombreUsuario().'</p></div>';
-        ?>
-            <div class ="p_product">
-              <a href="">Modificar</a>
-              <a href="">Eliminar</a>
-            </div></div>
-            <?php
+       
+          echo  '<div class ="p_product">';
+           echo '<form action = "ModUsuAdmin.php?id='.$id.'"method="POST"> <input type="submit" value="Modificar">
+              </form>';
+             echo '<form action = "EliminarUsuario.php?id='.$id.'"method="POST"> <input type="submit" value="Eliminar">
+              </form>';
+            echo '</div></div>';
+       
 
         }//Muestra la forma corta de un producto
        public static function listadoUsuario(){
