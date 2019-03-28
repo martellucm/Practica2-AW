@@ -10,7 +10,7 @@
 		echo '<div>';
 		echo	 '<p>VALORA ESTE JUEGO <br> (0 - 10) </p>';
 
-		echo	 '<form action = "includes/ValorarProducto.php?id='.$id.'" method="POST">
+		echo	 '<form action = "ValorarProducto.php?id='.$id.'" method="POST">
 			 <input type="number" name="val" value="0" min="0" max="10"><br>
 			 <input type="submit" value="Valorar">
 			 </form>';
@@ -33,3 +33,7 @@
 	
 }
  ?>
+
+  <?php 
+       Valoracion::setPuntuacion($_GET['id']);
+  ?>
