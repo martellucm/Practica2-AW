@@ -151,9 +151,9 @@ abstract class Form
         $html='';
         $numErrores = count($errores);
         if (  $numErrores == 1 ) {
-            $html .= "<ul><li>".$errores[0]."</li></ul>";
+            $html .= "<ul class=\"error\"<p>".$errores[0]."</p></ul>";
         } else if ( $numErrores > 1 ) {
-            $html .= "<ul><li>";
+            $html .= "<ul class=\"error\"><li>";
             $html .= implode("</li><li>", $errores);
             $html .= "</li></ul>";
         }

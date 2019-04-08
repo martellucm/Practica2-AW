@@ -1,6 +1,6 @@
  <?php
-	require_once __DIR__.'/config.php';
-	require_once __DIR__.'/Form.php';
+	require_once __DIR__.'/../comun/config.php';
+	require_once __DIR__.'/../comun/Form.php';
 	require_once __DIR__.'/Producto.php';
 
 class ModifProducto extends Form {

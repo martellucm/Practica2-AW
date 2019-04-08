@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once __DIR__.'/includes/Usuario.php';
+require_once __DIR__.'/includes/comun/config.php';
+require_once __DIR__.'/includes/usuarios/Usuario.php';
 ?>
 <!DOCTYPE HTML>
 <html lang="es">
@@ -37,7 +37,7 @@ require_once __DIR__.'/includes/Usuario.php';
 				}
 				echo '<div id = "muestraUser">';
 				echo '<div id="user_nick"><h1>Nickname: '.$user->nombreUsuario().'</h1></div>';
-				echo '<div id"user_name"><h2>Nombre completo: '.$user->nombre().'</h2></div>';
+				echo '<div id="user_name"><h2>Nombre completo: '.$user->nombre().'</h2></div>';
 				echo '<div id="user_rol"><h2>Rol: '.$user->rol().'</h2></div>';
 				echo '<div id="user_emai"><h3>Email: '.$user->email().'</h3></div>';
 				echo '<div id="user_birt"><h3>Fecha de nacimiento: '.$user->cumple().'</h3></div>';
@@ -51,7 +51,7 @@ require_once __DIR__.'/includes/Usuario.php';
 				echo '<div id = "admin">';
 				echo '<a href="ModUsuario.php?id='.$id.'"> Modificar </a>';
 
-				echo '<form action="comotuquieras.php?id='.$id.'&where=users" method="POST" enctype="multipart/form-data">';
+				echo '<form action="includes/comun/comotuquieras.php?id='.$id.'&where=users" method="POST" enctype="multipart/form-data">';
 				echo '<input type="file" name="file">';
 				echo '<button type="submit" name="submit"> Actualizar foto</button>';
 				echo '</div>';

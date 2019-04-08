@@ -58,8 +58,11 @@
           echo  '<div class ="p_product">';
            echo '<form action = "ModUsuAdmin.php?id='.$id.'"method="POST"> <input type="submit" value="Modificar">
               </form>';
+            echo '</div>';
+          echo  '<div class ="p_producte">';
              echo '<form action = "EliminarUsuario.php?id='.$id.'"method="POST"> <input type="submit" value="Eliminar">
               </form>';
+
             echo '</div></div>';
        
 

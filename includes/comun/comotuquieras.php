@@ -1,6 +1,6 @@
 <?php
 
-	$dir_subida = 'img/' . $_GET['where'] . '/';
+	$dir_subida = '../../img/' . $_GET['where'] . '/';
 	$new_name = $_GET['id'];
 	
 	if(isset($_POST['submit'])){
@@ -26,9 +26,9 @@
 					//$fileDestination = 'img/users/2.jpg';
 					move_uploaded_file($fileTmpName, $fileDestination);
 					if ($_GET['where'] == "users"){
-						header("Location: miBoqueron.php");
+						header("Location: ../../miBoqueron.php");
 					}else{
-						header("Location: productos.php?id=".$new_name);
+						header("Location: ../../productos.php?id=".$new_name);
 					}
 				}
 				else{

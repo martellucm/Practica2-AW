@@ -12,11 +12,17 @@ require_once __DIR__.'/includes/comun/config.php';
   <div id ="contenedor">
   	<div id = "contenido">
 	    <?php require'includes/comun/cabecera.php'?>
-      <div class="productos">
-          <?php
-            require_once __DIR__.'/includes/usuarios/GestionaUsuario.php';
-             GestionUsuario::listadoUsuario();
-          ?>
+      <div class="tabla">
+      <?php
+         require_once __DIR__.'/includes/Torneos/results.php';
+         MostrarResults::getResults(16);
+        ?>
+      </div>
+      <div class="podium">
+         <?php
+         require_once __DIR__.'/includes/Torneos/results.php';
+         MostrarResults::getResults(3);
+        ?>
       </div>
 	 </div>
 	</div>

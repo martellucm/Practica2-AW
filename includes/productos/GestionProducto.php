@@ -38,7 +38,7 @@ class GestionProducto{
         public static function getMaxProd(){
            $app = Aplicacion::getSingleton();
            $conn = $app->conexionBd();
-           $query = sprintf("SELECT id FROM producto WHERE puntos > 6 ORDER BY puntos DESC");
+           $query = sprintf("SELECT id FROM producto WHERE puntos > 6 ORDER BY puntos DESC LIMIT 3");
            $rs = $conn->query($query);
            $result = false;
            if ($rs) {
@@ -68,12 +68,12 @@ class GestionProducto{
 
          
          echo '<div class ="name_product"> <p>'.$row['nombre'].'</p></div>';
-         echo '<div class ="p_product"> <p> Puntuación:'.$row['puntos'].'</p> </div>';
+         echo '<div class ="p_product"> <p>'.$row['puntos'].'⭐</p> </div>';
          ?>
            <div class ="eliminar_prod">
            <?php
            if(isset($_SESSION['esAdmin']) && $_SESSION['esAdmin'] == true){
-             echo   '<form action = "EliminarProducto.php?id='.$row['id'].'"method="POST"> <input type="submit" value="Eliminar">
+             echo   '<form action = "includes/productos/EliminarProducto.php?id='.$row['id'].'"method="POST"> <input type="submit" value="Eliminar">
               </form>';
            }
            ?>

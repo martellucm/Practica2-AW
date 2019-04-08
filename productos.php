@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/includes/config.php';
+require_once __DIR__.'/includes/comun/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,13 +14,16 @@ require_once __DIR__.'/includes/config.php';
 	    <?php require'includes/comun/cabecera.php'?>
 	    <div id = "news">
 
-	       <?php require'leftnews.php'?>
+	       <?php require'includes/estructura/leftnews.php'?>
 	    </div>
       <div id = "reacciones">
-           <?php require'includes/ReaccionesProducto.php'?>
+           <?php 
+           require_once __DIR__.'/includes/productos/ReaccionesProducto.php';
+           Valoracion::setPuntuacion($_GET['id']);
+            ?>
       </div>
       <div id = "producto_total">
-           <?php require 'includes/muestraProducto.php' ?>
+           <?php require 'includes/productos/muestraProducto.php' ?>
       </div>
 	 </div>   
 	</div>
