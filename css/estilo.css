@@ -567,6 +567,7 @@ header nav a.b {
 	color: white;
 	background-color: #57bc90;
 	}
+
 	/*MENUADMIN*/
 	.menuadmin{
 		display: block;
@@ -575,6 +576,8 @@ header nav a.b {
 		line-height: 20px;
 		text-align: center;
 	}
+
+
 	/*NOTICIAS*/
 .addnoticia a{
 	color: #fbce00;
@@ -758,125 +761,88 @@ header nav a.b {
 	}
 	/*//////////Mi boquerón////////////////*/
 
-	div#muestraUser{
-		display: inline-grid;
-		margin-top: 5%;
-	}
-	div#img_user img{
-		height: 300px;
-		width: 300px;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 5%;
-		display: grid;
-		float: left;
-		padding: 5%;
-	}
 
-	div#user_nick h1{
-		display:block;
-		color:white;
-		text-decoration:none ;
-		padding:10px 20px;
-		line-height:normal;
-		font-family: sans-serif;
-		font-size:25px;
-		border-style: solid;
-		background-color: #4abdac;
-		
-	}
+	.muestraUser {
+    padding: 10px;
+    width: calc(100% - 400px);
+    height: 340px;
+    display: inline-block;
+}
 
-	div#user_name h2{
-		display:block;
-		color:white;
-		text-decoration:none ;
-		padding:10px 20px;
-		line-height:normal;
-		font-family: sans-serif;
-		font-size:18px;
-		border-style: solid;
-		background-color: #fbce00;
-		border-radius: 50px;
-	}
+div#img_user img {
+	padding-right: 10px;
+    height: 150px;
+    width: 150px;
+    float: left;
+    padding: 5%;
+    border-style: solid;
+    border-color: #f7b733;
+    border-radius: 50px;
+}
 
-	div#user_rol h2{
-		display:block;
-		color:white;
-		text-decoration:none ;
-		padding:10px 20px;
-		line-height:normal;
-		font-family: sans-serif;
-		font-size:18px;
-		border-style: solid;
-		background-color: #fbce00;
-		border-radius: 50px;
-	}
+.user {
+    float: left;
+}
 
-	div#user_emai h3{
-		display:block;
-		color:white;
-		text-decoration:none ;
-		padding:10px 20px;
-		line-height:normal;
-		font-family: sans-serif;
-		font-size:18px;
-		border-style: solid;
-		background-color: #fbce00;
-		border-radius: 50px;
-	}
+.user h1 {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #4abdac;
+    border-style: solid;
+    background-color: #4abdac;
+    margin: 10px;
 
-	div#user_birt h3{
-		display:block;
-		color:white;
-		text-decoration:none ;
-		padding:10px 20px;
-		line-height:normal;
-		font-family: sans-serif;
-		font-size:18px;
-		border-style: solid;
-		background-color: #fbce00;
-		border-radius: 50px;
-	}
 
-	div#user_desc p{
-		text-align: left;
-		display:block;
-		color:white;
-		text-decoration:none ;
-		padding:10px 20px;
-		line-height:normal;
-		font-family: sans-serif;
-		font-size:18px;
-		border-style: solid;
-		background-color: #fbce00;
-		border-radius: 50px;
-	}
+}
 
-	div#user_poin p{
-		text-align: left;
-		font-size: 24 px;
-		font-family:sans-serif;
-		display:block;
-		color:white;
-		text-decoration:none ;
-		padding:10px 20px;
-		line-height:normal;
-		font-family: sans-serif;
-		font-size:18px;
-		border-style: solid;
-		background-color: #fbce00;
-		border-radius: 50px;
+.user h2 {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #f7b733;
+    border-style: solid;
+    background-color: #f7b733;
+    margin: 10px;
+}
 
-	}
+.user h3 {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #f7b733;
+    border-style: solid;
+    background-color: #f7b733;
+    margin: 10px;
+}
 
+.user p {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #f7b733;
+    border-style: solid;
+    background-color: #f7b733;
+    margin: 10px;
+
+}
+
+/*
 	div#admin{
 		float: right;
-		display: block;
 		margin-top: 5%;
 	}
 
 	div#admin input{
-		display: inline-grid;
+		display: inline;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 2%;
@@ -909,3 +875,33 @@ header nav a.b {
 		color:  #b12a2a;
 		font-weight: bold;
 	}
+*/
+
+/*VALORAR ESTRELLITA*/
+.rating{
+	position: absolute;
+	display: flex;
+}
+.rating input{
+	display: none;
+}
+form#starRating{
+display: inline-block;
+direction: rtl;
+}
+form#starRating input{
+	display:none;
+}
+form#starRating label{
+	cursor:pointer;
+	width: 50px;
+	font-size: 40px;
+}
+
+form#starRating label:hover ~ label{
+	color:#0000FF;
+}
+form#starRating label:hover{
+	color:#0000FF;
+	
+}

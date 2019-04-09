@@ -35,20 +35,20 @@ require_once __DIR__.'/includes/usuarios/Usuario.php';
 				else{
 					echo '<div id = "img_user"><img src='.$directorio.'></div>';
 				}
-				echo '<div id = "muestraUser">';
-				echo '<div id="user_nick"><h1>Nickname: '.$user->nombreUsuario().'</h1></div>';
-				echo '<div id="user_name"><h2>Nombre completo: '.$user->nombre().'</h2></div>';
-				echo '<div id="user_rol"><h2>Rol: '.$user->rol().'</h2></div>';
-				echo '<div id="user_emai"><h3>Email: '.$user->email().'</h3></div>';
-				echo '<div id="user_birt"><h3>Fecha de nacimiento: '.$user->cumple().'</h3></div>';
+				echo '<div class = "muestraUser">';
+				echo '<span class="user"><h1>Nickname: '.$user->nombreUsuario().'</h1></span>';
+				echo '<span class="user"><h1>Nombre completo: '.$user->nombre().'</h1></span>';
+				echo '<span class="user"><h1>Rol: '.$user->rol().'</h1></span>';
+				echo '<span class="user"><h1>Email: '.$user->email().'</h1></span>';
+				echo '<span class="user"><h1>Fecha de nacimiento: '.$user->cumple().'</h1></span>';
 
-				echo '<div id="user_poin"><p>Puntos obtenidos en el foro:'.$user->ptosForum().'</p></div>';
-				echo '<div id="user_poin"><p>Puntos obtenidos valorando productos:'.$user->ptosProd().'</p></div>';
-				echo '<div id="user_poin"><p>Puntos obtenidos en torneos: '.$user->ptosTourn().'</p></div>';
+				echo '<span class="user"><h1>Puntos obtenidos en el foro:'.$user->ptosForum().'</h1></span>';
+				echo '<span class="user"><h1>Puntos obtenidos valorando productos:'.$user->ptosProd().'</h1></span>';
+				echo '<span class="user"><h1>Puntos obtenidos en torneos: '.$user->ptosTourn().'</h1></span>';
 				//echo '<div id="user_avat"><p>Avatar: '.$user->avatar().'</p></div>';
-				echo '<div id="user_desc"><p>Descripción: '.$user->descrip().'</p></div>';
-				echo '</div>';
-				echo '<div id = "admin">';
+				echo '<span class="user"><h1>Descripción: '.$user->descrip().'</h1></span>';
+				echo '</span>';
+				echo '<div class = "admin">';
 				echo '<a href="ModUsuario.php?id='.$id.'"> Modificar </a>';
 
 				echo '<form action="includes/comun/comotuquieras.php?id='.$id.'&where=users" method="POST" enctype="multipart/form-data">';
