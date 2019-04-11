@@ -1,0 +1,936 @@
+/*
+*	HOJA DE ESTILOS PRÁCTICA 2
+*/
+
+
+/*Sección del estilo para el contenedor en general----*/
+
+	/*div#contenedor {
+		height: 90px;
+		width: auto;
+		margin: 0px;
+	}
+/*Seccion del estilo para la cabecera ----------------*/
+
+	/*div#cabecera a, div#cabecera a:visited {
+		color: black;
+		font-weight: bold;
+		text-decoration: none;
+	}
+	div#cabecera a:hover {
+		color:  #b12a2a;
+		font-weight: bold;
+	}
+	div#cabecera{
+		background-color: #EEE8AA;
+		height: 120px;
+		border-color:  #b12a2a;
+		margin: 0px;
+		padding: 10px;
+		float: top;
+	}
+
+	.saludo {
+		float: right;
+	}
+	.saludo a{
+		display: inline-block;
+		width: 100px;
+		height: 40px;
+		background-color: #8FBC8F;
+		opacity: .8;
+		line-height: 40px;
+		text-align: center;
+		font-size: 17px;
+		border: 1px white outset;
+	}
+	.saludo p{
+		font-size: 12px;
+		
+	}
+/*Zona de estilo en el menuBar------------------------*/
+
+	/*.navMenu ul{
+		list-style: none;
+		margin: 0px;
+		padding-top: 36px;
+		padding-left: auto;
+		text-transform: uppercase;
+	}
+
+	.navMenu ul li{
+		float:left;
+		width: 120px;
+		height: auto;
+		background-color: #8FBC8F;
+		opacity: .8;
+		line-height: 40px;
+		text-align: center;
+		font-size: 17px;
+		border: 1px white outset;
+
+	}
+
+	.navMenu ul li a{
+		display: block;
+		color: white;
+		text-decoration: none;
+	}
+
+	.navMenu ul li a:hover{
+		background-color: #DCDCDC;
+	}
+/*index*/
+
+
+	/*div#news{
+		background-color: #8FBC8F;
+		display: flex;
+		float: left;
+		margin-top: 7%;
+		min-height: 400px;
+
+	}
+	div#news h3{
+		background-color: #5DADE2;
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
+	}
+
+	div#week{
+		background-color: tomato;
+		display: inline-grid;
+		margin-left: 10%;
+		margin-top: 2%;
+		padding: 1%;
+	}
+	div#week h2{
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
+		margin: auto;
+	}
+
+	div#week img{
+		height: 250px;
+		width: 250px;
+		margin-left: 18%;
+
+	}
+	div#month{
+		background-color: tomato;
+		display: inline-grid;
+		margin-left:15%;
+		margin-top: 2%;
+		padding: 1%;
+
+	}
+
+	div#month h2{
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
+		margin: auto;
+	}
+
+	div#month img{
+		height: 250px;
+		width: 250px;
+		margin-left: 5%;
+	}
+
+	div#publi{
+		height: 200px;
+		float: top;
+		margin-left: 10%;
+		display: grid;
+	}
+	.foto_publi{
+			display: block;
+			width: 784px;
+			height: 200px;
+	}
+
+	.productos{
+		margin-left: 20%;
+		margin-right: 10%;
+		display: block;
+		float: center;
+	}
+	.products{
+		background-color: #A569BD;
+		display: inline-grid;
+		margin-top: 5%;
+		margin-left: 10%;
+		position: bottom;
+		text-align: center;
+		border: 2px grey outset;
+		width: 204px;
+	}
+	.name_product {
+		background-color: #58A8CB;
+		display: grid;
+		bottom: 0;
+		
+	}
+
+	.name_product p{
+		 text-transform: uppercase;
+		 font-family: sans-serif;
+		 font-size: 120%;
+		 font-style: italic;
+
+	}
+
+	.p_product p{
+		color:#F4D03F;
+	}
+	.products img{
+		border: 2px grey outset;
+		height: 200px;
+		width: 200px;
+	}
+/*Fuentes y estilos para etiquetas universales -------*/
+
+	/*img {
+		float: left;
+		width: auto;
+		height: 100px;
+	}
+
+	h1{
+		font-weight: normal;
+		font-family:  Helvetica, Arial, sans-serif;
+		font-size: 40px;
+	}
+
+	h2{
+		font-weight: normal;
+		font-family:  Helvetica, Arial, sans-serif;
+		font-size: 35px;
+	}
+
+	h3{
+		font-weight: normal;
+		font-family:  Helvetica, Arial, sans-serif;
+		font-size: 30px;
+	}
+
+	p{
+		text-align: center;
+		font-size: 24 px;
+		font-family: "Arial", serif ;
+	}
+
+	table, th, td {
+  		border: 1px solid black;
+  		padding: 20px;
+   		margin-left:auto;
+	 	margin-right:auto;
+  		font-size: 18px;
+		font-family: "Arial", serif;
+	}
+
+/*Productos Completos*/
+
+	/*div#producto_total{
+		display: grid;
+	}
+
+	div#img_total img{
+		height: 300px;
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5%;
+	}
+	div#nombre_total{
+		display: block;
+		text-transform: uppercase;
+		margin-top: 5%
+	}
+	div#puntos_total{
+
+	}
+	div#desc_total{
+		
+		text-align: center;
+	}
+	div#edad_total{
+
+	}
+	div#jugadores_total{
+
+	}
+	div#link_total{
+
+	}
+	div#empresa_total{
+
+	}
+	div#reacciones{
+		background-color: #8FBC8F;
+		display: inline-flex;
+		float: right;
+		margin-top: 7%;
+		min-height: 400px;
+	}
+
+	div#reacciones input{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	div#reacciones p{
+		background-color: #5DADE2;
+		padding: 2%;
+		text-align: center;
+		color: white;
+		opacity: .8;
+		line-height: 40px;
+		text-shadow: 2px 2px black;
+	}
+
+/*MI BOQUERON*/
+
+
+	/*div#muestraUser{
+		display: inline-grid;
+		margin-top: 5%;
+	}
+	div#img_user img{
+		height: 300px;
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5%;
+		display: grid;
+		float: left;
+		padding: 5%;
+	}
+
+	div#user_nick h1{
+	}
+
+	div#user_name h2{
+	}
+
+	div#user_rol h2{
+	}
+
+	div#user_emai h3{
+	}
+
+	div#user_birt h3{
+	}
+
+	div#user_desc p{
+		text-align: left;
+	}
+
+	div#user_poin p{
+		text-align: left;
+		font-size: 24 px;
+		font-family: "Arial", serif ;
+
+	}
+
+	div#admin{
+		float: right;
+		display: block;
+		margin-top: 5%;
+	}
+
+	div#admin input{
+		display: inline-grid;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 2%;
+		float: right;
+		padding: 2%;
+	}
+	div#admin button{
+		display: inline-grid;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 2%
+	}
+
+	div#admin a ,div#admin a:visited{
+		color: black;
+		font-weight: bold;
+		text-decoration: none;
+		display: inline-grid;
+		width: 100px;
+		height: 40px;
+		background-color: #8FBC8F;
+		opacity: .8;
+		line-height: 40px;
+		text-align: center;
+		font-size: 17px;
+		border: 1px white outset;
+	}
+
+	div#admin a:hover {
+		color:  #b12a2a;
+		font-weight: bold;
+	}*/
+	
+	
+/*/////////////////-----/CABECERA////////////////*/
+*{margin:0;
+padding:0;}
+
+body{
+	background: white;
+
+}
+header {
+	width:auto; 
+	height:200px;
+	overflow: hidden;
+	background:#4abdac;
+	margin-bottom:10px;
+	align-content: center;
+	padding-right: none;
+}
+ 
+.wrapp {
+	width:90%; 
+	max-width:2000px;  
+	overflow:hidden; 
+
+}
+ 
+header .logo {
+
+	font-size:50px;
+	line-height:200px;
+	float:left;
+}
+header .logo img{
+	
+	width:200px;
+	height:200px;
+	float:left;
+}
+ 
+header nav {
+	float:left;
+	line-height:200px;	
+}
+ 
+header nav a {
+	display:inline-block;
+	color:#fdf1db;
+	text-decoration:none ;
+	padding:10px 20px;
+	line-height:normal;
+	font-family: sans-serif;
+	font-size:20px;
+	/*font-weight:bold;*/
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+ 
+header nav a:hover {
+	background:#f7b733;	
+	border-radius:100px;
+}
+header nav.b {
+	float:right;
+	line-height:100px;	
+}
+header nav a.b {
+	font-size:15px;
+}
+/*PRODUCTOSCORTO/////////////////////////////*/
+.productos{
+		margin-left: 20%;
+		margin-right: 10%;
+		display: block;
+		float: center;
+		
+	}
+
+
+	.products{
+		background-color: none;
+		display: inline-grid;
+		margin-top: 5%;
+		margin-left: 10%;
+		position: bottom;
+		text-align: center;
+		
+		width: 204px;
+	}
+	.products:hover
+	{
+		/*border-color: #e9b000;
+		border-right-style: inset;
+		border-bottom-style: inset;*/
+		
+	}
+	.name_product {
+		border-radius: 50px 20px;
+		background-color: #4abdac;
+		display: grid;
+		bottom: 0;
+		
+	}
+
+	.name_product :hover{
+		border-radius: 50px 20px;
+		background-color: #e9b000;
+	}
+
+	.name_product p{
+		color: white;
+		 text-transform: capitalize;
+		 font-family: sans-serif;
+		 font-size: 120%;
+		 
+
+	}
+	.eliminar_prod input[type=submit]{
+		margin-top: -30px;
+		border-radius: 20px 50px;
+		border-style: none;
+		color:black;
+		font-family: sans-serif;
+		background-color: #A783AS;
+		padding: 10px;
+		float:left;
+	}
+	.eliminar_prod input[type=submit]:hover{
+		color:white;	
+		background-color: #E60026;
+	}
+
+	.p_product p{
+		color:black;
+		background-color: #ffe79a;
+		font-weight: bold;
+		border-radius: 90%;
+		font-family: sans-serif;
+		font-size: 100%;
+		float: right;
+		margin-top:10px;
+		padding: 5px;
+	}
+	.p_product p:hover{
+		
+		background-color: #ffe79a;
+		font-weight: bold;
+		border-radius: 90%;
+		font-family: sans-serif;
+		font-size: 110%;
+		float: right;
+		margin-top:10px;
+		padding: 5px;
+	}
+	.products img{
+		
+		height: 200px;
+		width: 200px;
+	}
+
+.addprod a{
+	display:inline-block;
+	color: #57bc90;
+	text-decoration:none ;
+	padding:10px 20px;
+	margin-bottom: 50px;
+	line-height:normal;
+	font-family: sans-serif;
+	font-size:17px;
+	
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+	border-style: outset;
+	border-radius:100px
+	}
+.addprod a:hover{
+	color: white;
+	background-color: #57bc90;
+	}
+
+	/*MENUADMIN*/
+	.menuadmin{
+		display: block;
+		width: 200px;
+		float: right;
+		line-height: 20px;
+		text-align: center;
+	}
+
+
+	/*NOTICIAS*/
+.addnoticia a{
+	color: #fbce00;
+	padding:10px 20px;
+		margin-bottom: 50px;
+	font-family: sans-serif;
+	font-size:17px;
+	margin-top: 10px; 
+	text-decoration:none ;
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+	border-style: outset;
+	border-radius:100px
+	}
+
+.addnoticia a:hover{
+	color: white;
+	background-color: #fbce00;
+	}
+
+	.noti{
+		display: block;
+		float:left;
+		width: 250px;
+		height: auto;
+		
+		margin-left: 10px;
+		text-align: justify-all;
+		border-radius: 20px;
+
+	}
+
+	.noti h1{
+		color: white;
+		border-bottom-style: solid;
+		border-bottom-width: 5px;
+		border-bottom-color: white;
+		border-radius: 20px;
+		text-transform: uppercase;
+		font-family: sans-serif;
+		font-size: 35px;
+		line-height: 55px;
+		text-align:center;
+		background-color: #fbce00;
+		
+	}
+
+
+	.noti h2{
+		margin-top: 10px;
+		text-align: center;
+		color:white;
+		padding: 20px;
+		border-bottom-style: solid;
+		border-bottom-color: white;
+		border-bottom-width: 10px;
+		background-color: #4abdac;
+		border-radius: 50px 20px;
+		font-family: sans-serif;
+	
+	}
+	.noti p{
+		border-bottom-width: 5px;
+		border-radius: 20px;
+		background-color: #fff6be;
+		padding: 20px;
+		font-family: sans-serif;
+	}
+
+	/*LOGIN*/
+	.formulario legend{
+		font-size: 20px;
+		font-family: sans-serif;
+		border-radius: 50px;
+		background-color: #4abdac;
+		 
+		border-style: solid;
+		border-color: white;
+		border-width: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
+		color:white;
+		}
+
+	.formulario input[type=text]{
+		align-self: center;
+		border-radius:  50px;
+		color:black;
+		font-family: sans-serif;
+		cursor:pointer;
+	}
+	.formulario input[type=password]{
+		align-self: center;
+		border-radius:  50px;
+		color:black;
+		font-family: sans-serif;
+		cursor:pointer;
+	}
+	.formulario button[type=submit]{
+		border-radius: 50px;
+		background-color: #4abdac;
+		border-style: none;
+		color:white;
+		font-family: sans-serif;
+		padding: 10px;
+		cursor:pointer;
+	}
+	.formulario button[type=submit]:hover{
+		background-color: #57bc90;
+	}
+	 .formulario {
+	 	font-family: sans-serif;
+	 	line-height: 55px;
+		width: 33.33%;
+		font-size: 18px;
+		background-color: #cee4e1;
+		border-color:white;
+		display: block;
+		text-align: center;
+		padding: 20px;
+		border-radius: 50px;
+		margin: 0 auto;
+	}
+	.formulario input[type="date"]{
+		align-self: center;
+		border-radius:  50px;
+		color:black;
+		font-family: sans-serif;
+		cursor:pointer;
+	}
+
+/*///////////////////ERROR////////////////////*/
+.error{
+		font-family: sans-serif;
+	 	line-height: auto;
+		font-size: 15px;
+		display: block;
+		text-align: center;
+		padding: 20px;
+		border-radius: 50px;
+		margin: 0 auto;
+	background-color: tomato;
+	color: white;
+	width: 20%;
+}
+
+/*///////////////////////GESTION USUARIOS/////////////////////*/
+	.p_product input[type=submit]{
+		margin-top: 15px;
+		border-radius: 20px 50px;
+		border-style: none;
+		color:black;
+		font-family: sans-serif;
+		background-color: #A783AS;
+		padding: 10px;
+		float:right;
+		cursor:pointer;
+		width: 40%;
+
+	}
+	.p_product input[type=submit]:hover{
+	background-color: #57bc90;
+	color:white;
+	}
+	.p_producte input[type=submit]{
+	margin-top: -35px;
+	border-radius: 20px 50px;
+	border-style: none;
+	color:black;
+	font-family: sans-serif;
+	background-color: #A783AS;
+	padding: 10px;
+	float:left;
+	cursor:pointer;
+	width: 40%;
+	}
+	.p_producte input[type=submit]:hover{
+	background-color: #E60026;
+	color:white;
+	}
+	/*//////////Mi boquerón////////////////*/
+
+
+	.muestraUser {
+    padding: 10px;
+    width: calc(100% - 400px);
+    height: 340px;
+    display: inline-block;
+}
+
+div#img_user img {
+	padding-right: 10px;
+    height: 150px;
+    width: 150px;
+    float: left;
+    padding: 5%;
+    border-style: solid;
+    border-color: #f7b733;
+    border-radius: 50px;
+}
+
+.user {
+    float: left;
+}
+
+.user h1 {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #4abdac;
+    border-style: solid;
+    background-color: #4abdac;
+    margin: 10px;
+
+
+}
+
+.user h2 {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #f7b733;
+    border-style: solid;
+    background-color: #f7b733;
+    margin: 10px;
+}
+
+.user h3 {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #f7b733;
+    border-style: solid;
+    background-color: #f7b733;
+    margin: 10px;
+}
+
+.user p {
+    color: white;
+    position: relative;
+    padding: 20px 20px;
+    font-family: sans-serif;
+    font-size: 25px;
+    border-color: #f7b733;
+    border-style: solid;
+    background-color: #f7b733;
+    margin: 10px;
+
+}
+
+/*
+	div#admin{
+		float: right;
+		margin-top: 5%;
+	}
+
+	div#admin input{
+		display: inline;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 2%;
+		float: right;
+		padding: 2%;
+	}
+	div#admin button{
+		display: inline-grid;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 2%
+	}
+
+	div#admin a ,div#admin a:visited{
+		color: black;
+		font-weight: bold;
+		text-decoration: none;
+		display: inline-grid;
+		width: 100px;
+		height: 40px;
+		background-color: #8FBC8F;
+		opacity: .8;
+		line-height: 40px;
+		text-align: center;
+		font-size: 17px;
+		border: 1px white outset;
+	}
+
+	div#admin a:hover {
+		color:  #b12a2a;
+		font-weight: bold;
+	}
+*/
+
+/*VALORAR ESTRELLITA*/
+.rating{
+	position: absolute;
+	display: flex;
+}
+.rating input{
+	display: none;
+}
+form#starRating{
+display: inline-block;
+direction: rtl;
+}
+form#starRating input{
+	display:none;
+}
+form#starRating label{
+	cursor:pointer;
+	width: 50px;
+	font-size: 40px;
+}
+
+form#starRating label:hover ~ label{
+	color:#0000FF;
+}
+form#starRating label:hover{
+	color:#0000FF;
+	
+}
+
+#torneo_table, #qualifyingTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#torneo_table td, #torneo_table th, #qualifyingTable td, #qualifyingTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#torneo_table tr:nth-child(even){background-color: #f2f2f2;}
+#qualifyingTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#torneo_table tr:hover {background-color: #ddd;}
+#qualifyingTable tr:hover {background-color: #ddd;}
+
+#torneo_table, #qualifyingTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
